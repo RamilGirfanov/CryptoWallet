@@ -64,11 +64,17 @@ class LoginScreen: UIView {
         return passTextField
     }()
     
+    private let enterButton: UIButton = {
+        let enterButton = UIButton()
+        enterButton.setTitle("Войти", for: .normal)
+        enterButton.translatesAutoresizingMaskIntoConstraints = false
+        return enterButton
+    }()
     
 //    MARK: - Layout
     
     private func layout() {
-        [label, stack].forEach { addSubview($0) }
+        [label, stack, enterButton].forEach { addSubview($0) }
         
         [loginTextField, passTextField].forEach { stack.addArrangedSubview($0) }
         
@@ -81,7 +87,11 @@ class LoginScreen: UIView {
             stack.heightAnchor.constraint(equalToConstant: 100),
             
             label.centerXAnchor.constraint(equalTo: centerXAnchor),
-            label.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -safeIndent)
+            label.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -safeIndent),
+            
+            enterButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: safeIndent),
+            enterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
+            enterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent)
         ])
     }
 }

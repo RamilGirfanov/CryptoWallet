@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginScreen: UIView {
+final class LoginScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground

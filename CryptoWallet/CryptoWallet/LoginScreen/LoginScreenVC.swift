@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginScreenVC: UIViewController {
+final class LoginScreenVC: UIViewController {
     
     let loginScreen: LoginScreen = {
         let loginScreen = LoginScreen()

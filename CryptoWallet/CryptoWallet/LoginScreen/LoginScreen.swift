@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginScreen: UIView {
+final class LoginScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
@@ -67,6 +67,8 @@ class LoginScreen: UIView {
     private let enterButton: UIButton = {
         let enterButton = UIButton()
         enterButton.setTitle("Войти", for: .normal)
+        enterButton.backgroundColor = .blue
+        enterButton.layer.cornerRadius = 10
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         return enterButton
     }()
@@ -91,7 +93,8 @@ class LoginScreen: UIView {
             
             enterButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: safeIndent),
             enterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
-            enterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent)
+            enterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
+            enterButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
 }

@@ -18,9 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
 //        window.rootViewController = LoginScreenVC()
-        let listScreenVC = ListScreenVC()
-        let navContriller = UINavigationController(rootViewController: listScreenVC)
-        window.rootViewController = navContriller
+        
+//        let listScreenVC = ListScreenVC()
+//        let navContriller = UINavigationController(rootViewController: listScreenVC)
+//        window.rootViewController = navContriller
+        
+        window.rootViewController = MyNavigationController(rootViewController: LoginScreenVC())
         
         window.makeKeyAndVisible()
         self.window = window

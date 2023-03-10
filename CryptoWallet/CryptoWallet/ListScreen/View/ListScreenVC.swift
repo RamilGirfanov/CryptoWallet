@@ -31,7 +31,7 @@ final class ListScreenVC: UIViewController {
     
     private func setupScreen() {
         navigationItem.title = "Монеты"
-                
+        
         let barButtonSort = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(sortList))
         navigationItem.rightBarButtonItem = barButtonSort
         

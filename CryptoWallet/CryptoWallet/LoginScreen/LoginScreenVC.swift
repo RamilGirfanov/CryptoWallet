@@ -14,8 +14,8 @@ final class LoginScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        setupButton()
         layout()
+        enterDataSetup()
     }
     
     
@@ -65,26 +65,15 @@ final class LoginScreenVC: UIViewController {
         return passTextField
     }()
     
-    private let enterButton: UIButton = {
+    private lazy var enterButton: UIButton = {
         let enterButton = UIButton()
         enterButton.setTitle("Войти", for: .normal)
         enterButton.backgroundColor = .blue
         enterButton.layer.cornerRadius = 10
         enterButton.translatesAutoresizingMaskIntoConstraints = false
+        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
         return enterButton
     }()
-    
-    
-    // MARK: - Настройка кнопки
-    
-    private func setupButton() {
-        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
-    }
-    
-    @objc
-    private func enter() {
-        RootVCManager.changeRootVC(VCType: ListScreenVC())
-    }
     
     
     // MARK: - Layout
@@ -110,5 +99,57 @@ final class LoginScreenVC: UIViewController {
             enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
             enterButton.heightAnchor.constraint(equalToConstant: 44)
         ])
+    }
+    
+    
+    // MARK: - Функционал
+    
+    @objc
+    private func enter() {
+        let enterDataStatus = chekLoginData()
+        
+        if enterDataStatus {
+            RootVCManager.changeRootVC(VCType: ListScreenVC())
+            
+            let enterStatus = true
+            let key = UDEnterKeys.enterStatus.rawValue
+            UserDefaults.standard.set(enterStatus, forKey: key)
+        }
+    }
+    
+//    Функция для предустановки логина и пароля
+    private func enterDataSetup() {
+        let login = "1234"
+        let loginKey = UDEnterKeys.login.rawValue
+        UserDefaults.standard.set(login, forKey: loginKey)
+        
+        let pass = "1234"
+        let passKey = UDEnterKeys.password.rawValue
+        UserDefaults.standard.set(pass, forKey: passKey)
+    }
+    
+//    Функция проверки корректности логина и пароля
+    private func chekLoginData() -> Bool {
+        var dataStatus = false
+        
+//      Проверка на заполненность
+//        if loginTextField.text?.isEmpty == false {
+//            loginTextField.attributedPlaceholder = NSAttributedString(string: "Введите логин", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+//        }
+//
+//        if passTextField.text?.isEmpty == false {
+//            passTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+//        }
+        
+//      Проверка на корректность логина
+        let rightLogin = UserDefaults.standard.string(forKey: UDEnterKeys.login.rawValue)
+        guard let rightLogin = rightLogin, loginTextField.text == rightLogin else { return dataStatus }
+        
+//      Проверка на корректность пароля
+        let rightPass = UserDefaults.standard.string(forKey: UDEnterKeys.password.rawValue)
+        guard let rightPass = rightPass, passTextField.text == rightPass else { return dataStatus }
+        dataStatus = true
+        
+        return dataStatus
     }
 }

@@ -121,5 +121,9 @@ extension ListScreenVC {
     
     @objc private func logOut() {
         RootVCManager.changeRootVC(VCType: LoginScreenVC())
+        
+        let enterStatus = false
+        let key = UDEnterKeys.enterStatus.rawValue
+        UserDefaults.standard.set(enterStatus, forKey: key)
     }
 }

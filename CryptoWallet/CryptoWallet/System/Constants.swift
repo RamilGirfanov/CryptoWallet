@@ -13,3 +13,9 @@ extension UIView {
         return String(describing: self)
     }
 }
+
+enum UDEnterKeys: String {
+    case login
+    case password
+    case enterStatus
+}

@@ -8,25 +8,52 @@
 import UIKit
 
 final class ListScreenVC: UIViewController {
-    // MARK: - Экземпляр ListScreen
-    
-    private lazy var listScreen: ListScreen = {
-        let listScreen = ListScreen()
-        listScreen.table.dataSource = self
-        listScreen.table.delegate = self
-        return listScreen
-    }()
-    
     
     // MARK: - Lifecycle
     
-    override func loadView() {
-        view = listScreen
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        layout()
         setupScreen()
+    }
+    
+    // MARK: - UIObjects
+    
+    lazy var table: UITableView = {
+        let table = UITableView()
+        table.register(CoinCell.self, forCellReuseIdentifier: CoinCell.identifier)
+        table.separatorInset = .zero
+        table.dataSource = self
+        table.delegate = self
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+    
+    let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.isHidden = false
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
+    
+    // MARK: - Layout
+    
+    private func layout() {
+        [table, activityIndicator].forEach { view.addSubview($0) }
+        
+        NSLayoutConstraint.activate([
+            table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            table.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            table.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            activityIndicator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
     
     private func setupScreen() {
@@ -49,7 +76,8 @@ extension ListScreenVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #warning("указать колличество ячеек")
+//        #warning("указать колличество ячеек")
+        3
     }
     
     
@@ -57,7 +85,7 @@ extension ListScreenVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell
         guard let cell = cell else { return UITableViewCell() }
         
-        cell.pullCell(coinData: <#T##<<error type>>#>)
+//        cell.pullCell(coinData: <#T##<<error type>>#>)
         
         return cell
     }
@@ -92,6 +120,6 @@ extension ListScreenVC {
     }
     
     @objc private func logOut() {
-        
+        RootVCManager.changeRootVC(VCType: LoginScreenVC())
     }
 }

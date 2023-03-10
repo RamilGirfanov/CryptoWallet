@@ -73,9 +73,9 @@ final class CoinCell: UITableViewCell {
     
     // MARK: - Заполнение ячеек данными
     
-    func pullCell(coinData: Coin) {
-        nameLabel.text = coinData.coinName
-        priceLabel.text = coinData.price
-        changePriceLabel.text = coinData.changePrice
-    }
+//    func pullCell(coinData: Coin) {
+//        nameLabel.text = coinData.coinName
+//        priceLabel.text = coinData.price
+//        changePriceLabel.text = coinData.changePrice
+//    }
 }

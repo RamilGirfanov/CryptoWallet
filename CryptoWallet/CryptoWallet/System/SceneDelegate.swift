@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let navContriller = UINavigationController(rootViewController: listScreenVC)
 //        window.rootViewController = navContriller
         
-        window.rootViewController = MyNavigationController(rootViewController: LoginScreenVC())
+        window.rootViewController = ScreenBuilder.buildScreen(VCType: LoginScreenVC())
         
         window.makeKeyAndVisible()
         self.window = window

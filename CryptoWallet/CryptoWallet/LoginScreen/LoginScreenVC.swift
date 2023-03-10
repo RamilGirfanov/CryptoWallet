@@ -9,19 +9,106 @@ import UIKit
 
 final class LoginScreenVC: UIViewController {
     
-    let loginScreen: LoginScreen = {
-        let loginScreen = LoginScreen()
-//        loginScreen.loginTextField.delegate = self
-//        loginScreen.passTextField.delegate = self
-        return loginScreen
-    }()
-    
-    override func loadView() {
-        view = loginScreen
-    }
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        setupButton()
+        layout()
+    }
+    
+    
+    // MARK: - UIObjects
+    
+    private let label: UILabel = {
+        let label = UILabel()
+        label.text = "Вход"
+        label.font = .systemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.layer.cornerRadius = 10
+        stack.clipsToBounds = true
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.layer.borderColor = UIColor.lightGray.cgColor
+        stack.layer.borderWidth = 0.5
+        return stack
+    }()
+    
+    let loginTextField: UITextField = {
+        let loginTextField = UITextField()
+        loginTextField.placeholder = "Введите логин"
+        loginTextField.textColor = .black
+        loginTextField.backgroundColor = .systemGray6
+        loginTextField.autocapitalizationType = .none
+        loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+        loginTextField.layer.borderWidth = 0.5
+        loginTextField.translatesAutoresizingMaskIntoConstraints = false
+        return loginTextField
+    }()
+    
+    let passTextField: UITextField = {
+        let passTextField = UITextField()
+        passTextField.placeholder = "Введите пароль"
+        passTextField.textColor = .black
+        passTextField.backgroundColor = .systemGray6
+        passTextField.isSecureTextEntry = true
+        passTextField.layer.borderColor = UIColor.lightGray.cgColor
+        passTextField.layer.borderWidth = 0.5
+        passTextField.translatesAutoresizingMaskIntoConstraints = false
+        return passTextField
+    }()
+    
+    private let enterButton: UIButton = {
+        let enterButton = UIButton()
+        enterButton.setTitle("Войти", for: .normal)
+        enterButton.backgroundColor = .blue
+        enterButton.layer.cornerRadius = 10
+        enterButton.translatesAutoresizingMaskIntoConstraints = false
+        return enterButton
+    }()
+    
+    
+    // MARK: - Настройка кнопки
+    
+    private func setupButton() {
+        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
+    }
+    
+    @objc
+    private func enter() {
+        RootVCManager.changeRootVC(VCType: ListScreenVC())
+    }
+    
+    
+    // MARK: - Layout
+    
+    private func layout() {
+        [label, stack, enterButton].forEach { view.addSubview($0) }
         
+        [loginTextField, passTextField].forEach { stack.addArrangedSubview($0) }
+        
+        let safeIndent: CGFloat = 16
+        
+        NSLayoutConstraint.activate([
+            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
+            stack.heightAnchor.constraint(equalToConstant: 100),
+            
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -safeIndent),
+            
+            enterButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: safeIndent),
+            enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
+            enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
+            enterButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
     }
 }

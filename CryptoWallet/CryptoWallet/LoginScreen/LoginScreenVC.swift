@@ -44,7 +44,6 @@ final class LoginScreenVC: UIViewController {
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
-        loginTextField.textColor = .black
         loginTextField.backgroundColor = .systemGray6
         loginTextField.autocapitalizationType = .none
         loginTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -56,7 +55,6 @@ final class LoginScreenVC: UIViewController {
     let passTextField: UITextField = {
         let passTextField = UITextField()
         passTextField.placeholder = "Введите пароль"
-        passTextField.textColor = .black
         passTextField.backgroundColor = .systemGray6
         passTextField.isSecureTextEntry = true
         passTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -133,13 +131,15 @@ final class LoginScreenVC: UIViewController {
         var dataStatus = false
         
 //      Проверка на заполненность
-//        if loginTextField.text?.isEmpty == false {
-//            loginTextField.attributedPlaceholder = NSAttributedString(string: "Введите логин", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//        }
-//
-//        if passTextField.text?.isEmpty == false {
-//            passTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-//        }
+        guard loginTextField.text?.isEmpty == false else {
+            loginTextField.attributedPlaceholder = NSAttributedString(string: "Введите логин", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            return dataStatus
+        }
+        
+        guard passTextField.text?.isEmpty == false else {
+            passTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            return dataStatus
+        }
         
 //      Проверка на корректность логина
         let rightLogin = UserDefaults.standard.string(forKey: UDEnterKeys.login.rawValue)

@@ -19,6 +19,7 @@
 		744E51AD29BA17A300BB14E9 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51AC29BA17A300BB14E9 /* ListScreen.swift */; };
 		744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51B229BA223F00BB14E9 /* MyNavigationController.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
+		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		744E51AC29BA17A300BB14E9 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
 		744E51B229BA223F00BB14E9 /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
+		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				7417F8C429B5360C007D92C4 /* System */,
 				7417F8C129B52F34007D92C4 /* LoginScreen */,
 				741029F229B557220078E88D /* ListScreen */,
+				74E8E9D629BB7CF200F10E34 /* DescriptionScreen */,
 				744E51B129BA1E3200BB14E9 /* Resources */,
 				7417F8BB29B4C0B4007D92C4 /* Info.plist */,
 				7477FE1929BB46CE008192D3 /* Trash */,
@@ -147,6 +150,22 @@
 				744E51AC29BA17A300BB14E9 /* ListScreen.swift */,
 			);
 			path = Trash;
+			sourceTree = "<group>";
+		};
+		74E8E9D629BB7CF200F10E34 /* DescriptionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				74E8E9D729BB7D0000F10E34 /* View */,
+			);
+			path = DescriptionScreen;
+			sourceTree = "<group>";
+		};
+		74E8E9D729BB7D0000F10E34 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */,
 				7417F8B229B4C0B3007D92C4 /* LoginScreenVC.swift in Sources */,
 				741029F829B559440078E88D /* CoinCell.swift in Sources */,
 				741029FA29B559BA0078E88D /* ListScreenVC.swift in Sources */,

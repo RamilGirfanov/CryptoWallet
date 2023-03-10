@@ -16,14 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
+        let keyForEnterStatus = UDEnterKeys.enterStatus.rawValue
+        let enterStatus = UserDefaults.standard.bool(forKey: keyForEnterStatus)
         
-//        window.rootViewController = LoginScreenVC()
-        
-//        let listScreenVC = ListScreenVC()
-//        let navContriller = UINavigationController(rootViewController: listScreenVC)
-//        window.rootViewController = navContriller
-        
-        window.rootViewController = MyNavigationController(rootViewController: LoginScreenVC())
+        switch enterStatus {
+        case true:
+            window.rootViewController = ScreenBuilder.buildScreen(VCType: ListScreenVC())
+        case false:
+            window.rootViewController = ScreenBuilder.buildScreen(VCType: LoginScreenVC())
+        }
         
         window.makeKeyAndVisible()
         self.window = window

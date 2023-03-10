@@ -4,7 +4,7 @@
 //
 //  Created by Рамиль Гирфанов on 09.03.2023.
 //
-
+/*
 import UIKit
 
 final class ListScreen: UIView {
@@ -57,3 +57,4 @@ final class ListScreen: UIView {
         ])
     }
 }
+*/

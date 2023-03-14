@@ -7,20 +7,41 @@
 
 import UIKit
 
+enum VCType {
+    case loginScreen
+    case listScreen
+}
+
 final class ScreenBuilder {
-    static func buildScreen(VCType: UIViewController) -> UINavigationController {
-        let screen = VCType
-        return MyNavigationController(rootViewController: screen)
+    static func buildScreen(VCType: VCType) -> UINavigationController {
+        
+        switch VCType {
+        case .loginScreen:
+            let screen = LoginScreenVC()
+            return MyNavigationController(rootViewController: screen)
+        case .listScreen:
+            let screen = ListScreenVC()
+            let VM = ListScreenVM()
+            screen.viewModel = VM
+            return MyNavigationController(rootViewController: screen)
+        }
     }
 }
 
 final class RootVCManager {
-    static func changeRootVC(VCType: UIViewController) {
+    static func changeRootVC(VCType: VCType) {
+        
         var sceneDelegate: SceneDelegate? {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                   let delegate = windowScene.delegate as? SceneDelegate else { return nil }
             return delegate
         }
-        sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: VCType)
+        
+        switch VCType {
+        case .loginScreen:
+            sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: .loginScreen)
+        case .listScreen:
+            sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: .listScreen)
+        }
     }
 }

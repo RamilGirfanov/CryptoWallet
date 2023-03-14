@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         switch enterStatus {
         case true:
-            window.rootViewController = ScreenBuilder.buildScreen(VCType: ListScreenVC())
+            window.rootViewController = ScreenBuilder.buildScreen(VCType: .listScreen)
         case false:
-            window.rootViewController = ScreenBuilder.buildScreen(VCType: LoginScreenVC())
+            window.rootViewController = ScreenBuilder.buildScreen(VCType: .loginScreen)
         }
         
         window.makeKeyAndVisible()

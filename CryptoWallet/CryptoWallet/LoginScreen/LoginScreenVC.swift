@@ -15,7 +15,7 @@ final class LoginScreenVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         layout()
-        enterDataSetup()
+        setupLoginData()
     }
     
     
@@ -107,23 +107,12 @@ final class LoginScreenVC: UIViewController {
         let enterDataStatus = chekLoginData()
         
         if enterDataStatus {
-            RootVCManager.changeRootVC(VCType: ListScreenVC())
+            RootVCManager.changeRootVC(VCType: .listScreen)
             
             let enterStatus = true
             let key = UDEnterKeys.enterStatus.rawValue
             UserDefaults.standard.set(enterStatus, forKey: key)
         }
-    }
-    
-//    Функция для предустановки логина и пароля
-    private func enterDataSetup() {
-        let login = "1234"
-        let loginKey = UDEnterKeys.login.rawValue
-        UserDefaults.standard.set(login, forKey: loginKey)
-        
-        let pass = "1234"
-        let passKey = UDEnterKeys.password.rawValue
-        UserDefaults.standard.set(pass, forKey: passKey)
     }
     
 //    Функция проверки корректности логина и пароля

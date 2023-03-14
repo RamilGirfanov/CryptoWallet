@@ -16,6 +16,7 @@ final class ListScreenVC: UIViewController {
         view.backgroundColor = .systemBackground
         layout()
         setupScreen()
+        lisenViewModel()
     }
     
     // MARK: - UIObjects
@@ -36,6 +37,10 @@ final class ListScreenVC: UIViewController {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
     }()
+    
+    // MARK: - ViewModel
+    
+    var viewModel: (VMProtocolIn & VMProtocolOut)?
     
     
     // MARK: - Layout
@@ -64,6 +69,10 @@ final class ListScreenVC: UIViewController {
         
         let barButtonLogOut = UIBarButtonItem(image: UIImage(systemName: "figure.walk.arrival"), style: .plain, target: self, action: #selector(logOut))
         navigationItem.leftBarButtonItem = barButtonLogOut
+    }
+    
+    private func lisenViewModel() {
+        #warning("Настроить")
     }
 }
 
@@ -111,16 +120,18 @@ extension ListScreenVC: UITableViewDelegate {
 // MARK: - Методы ListScreenVC
 
 extension ListScreenVC {
-    @objc private func sortList() {
-        
+    @objc
+    private func sortList() {
+        #warning("Настроить")
     }
     
     private func showCoin(index: Int) {
-        
+        #warning("Настроить")
     }
     
-    @objc private func logOut() {
-        RootVCManager.changeRootVC(VCType: LoginScreenVC())
+    @objc
+    private func logOut() {
+        RootVCManager.changeRootVC(VCType: .loginScreen)
         
         let enterStatus = false
         let key = UDEnterKeys.enterStatus.rawValue

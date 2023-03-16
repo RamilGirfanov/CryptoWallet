@@ -10,9 +10,8 @@ import Foundation
 final class ListScreenVM: VMProtocolIn, VMProtocolOut {
     
     private var network = Network()
-    
-    private let coinList = getCoinList()
-    
+    var coins = Coins()
+        
     private var dataArray: [Data] = []
     
     /*
@@ -34,9 +33,9 @@ final class ListScreenVM: VMProtocolIn, VMProtocolOut {
     private func getUrlArray() -> [URL] {
         var urlArray: [URL] = []
         
-        guard !coinList.isEmpty else { return urlArray }
+        guard !coins.coinList.isEmpty else { return urlArray }
         
-        coinList.forEach { coin in
+        coins.coinList.forEach { coin in
             network.coin = coin
             if let url = URL(string: network.urlString) {
                 urlArray.append(url)
@@ -62,6 +61,7 @@ final class ListScreenVM: VMProtocolIn, VMProtocolOut {
                     self?.dataArray.append(data)
                 }
             }
+            task.resume()
         }
     }
     

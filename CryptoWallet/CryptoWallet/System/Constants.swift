@@ -37,3 +37,8 @@ func getCoinList() -> [String] {
     let coinList = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
     return coinList
 }
+
+
+let commonCornerRadius: CGFloat = 10
+
+let commonColor: UIColor = .systemBlue

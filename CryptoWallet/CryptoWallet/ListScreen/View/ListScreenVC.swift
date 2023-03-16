@@ -16,6 +16,7 @@ final class ListScreenVC: UIViewController {
         view.backgroundColor = .systemBackground
         layout()
         setupScreen()
+        lisenViewModel()
     }
     
     // MARK: - UIObjects
@@ -70,6 +71,11 @@ final class ListScreenVC: UIViewController {
         enterButton.isHidden = true
         return enterButton
     }()
+    
+    
+    // MARK: - ViewModel
+    
+    var viewModel: (VMProtocolIn & VMProtocolOut)?
     
     
     // MARK: - Layout
@@ -160,6 +166,10 @@ extension ListScreenVC {
     private func showCoin(index: Int) {
         
     }
+    
+    private func lisenViewModel() {
+        #warning("Настроить")
+    }
 }
 
 
@@ -199,6 +209,28 @@ extension ListScreenVC: UITableViewDelegate {
     }
 }
 
+
+// MARK: - Методы ListScreenVC
+
+extension ListScreenVC {
+    @objc
+    private func sortList() {
+        #warning("Настроить")
+    }
+
+    @objc
+    private func logOut() {
+        RootVCManager.changeRootVC(VCType: .loginScreen)
+        
+        let enterStatus = false
+        let key = UDEnterKeys.enterStatus.rawValue
+        UserDefaults.standard.set(enterStatus, forKey: key)
+        
+            
+    private func showCoin(index: Int) {
+        #warning("Настроить")
+    }
+    
 // MARK: - Расширение UIPickerView
 
 extension ListScreenVC: UIPickerViewDataSource {
@@ -213,4 +245,5 @@ extension ListScreenVC: UIPickerViewDataSource {
 
 extension ListScreenVC: UIPickerViewDelegate {
     
+
 }

@@ -20,6 +20,9 @@
 		744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51B229BA223F00BB14E9 /* MyNavigationController.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
+		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
+		74E8E9DD29C0D66C00F10E34 /* ListScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DC29C0D66C00F10E34 /* ListScreenVM.swift */; };
+		74E8E9E029C0DADE00F10E34 /* MVVMProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DF29C0DADE00F10E34 /* MVVMProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		744E51B229BA223F00BB14E9 /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
+		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		74E8E9DC29C0D66C00F10E34 /* ListScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreenVM.swift; sourceTree = "<group>"; };
+		74E8E9DF29C0DADE00F10E34 /* MVVMProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				7417F8C429B5360C007D92C4 /* System */,
+				74E8E9DE29C0DAAF00F10E34 /* Protocols */,
 				7417F8C129B52F34007D92C4 /* LoginScreen */,
 				741029F229B557220078E88D /* ListScreen */,
 				74E8E9D629BB7CF200F10E34 /* DescriptionScreen */,
@@ -123,6 +130,7 @@
 		744E51AF29BA1DF000BB14E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				74E8E9DA29C0CE0F00F10E34 /* Network.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 		744E51B029BA1DFF00BB14E9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				74E8E9DC29C0D66C00F10E34 /* ListScreenVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -166,6 +175,14 @@
 				74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		74E8E9DE29C0DAAF00F10E34 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				74E8E9DF29C0DADE00F10E34 /* MVVMProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,8 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74E8E9DD29C0D66C00F10E34 /* ListScreenVM.swift in Sources */,
 				74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */,
 				7417F8B229B4C0B3007D92C4 /* LoginScreenVC.swift in Sources */,
+				74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */,
 				741029F829B559440078E88D /* CoinCell.swift in Sources */,
 				741029FA29B559BA0078E88D /* ListScreenVC.swift in Sources */,
 				744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */,
@@ -247,6 +266,7 @@
 				7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */,
 				7417F8AE29B4C0B3007D92C4 /* AppDelegate.swift in Sources */,
 				7417F8B029B4C0B3007D92C4 /* SceneDelegate.swift in Sources */,
+				74E8E9E029C0DADE00F10E34 /* MVVMProtocols.swift in Sources */,
 				744E51AB29BA103300BB14E9 /* Constants.swift in Sources */,
 				744E51AD29BA17A300BB14E9 /* ListScreen.swift in Sources */,
 			);

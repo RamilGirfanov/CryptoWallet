@@ -19,3 +19,8 @@ enum UDEnterKeys: String {
     case password
     case enterStatus
 }
+
+
+let commonCornerRadius: CGFloat = 10
+
+let commonColor: UIColor = .systemBlue

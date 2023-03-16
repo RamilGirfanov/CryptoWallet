@@ -37,11 +37,49 @@ final class ListScreenVC: UIViewController {
         return activityIndicator
     }()
     
+    private let subViewForSort: UIView = {
+        let subViewForSort = UIView()
+        subViewForSort.translatesAutoresizingMaskIntoConstraints = false
+        return subViewForSort
+    }()
+    
+    private var subViewHeightConstreint = NSLayoutConstraint()
+    
+    private lazy var picker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.dataSource = self
+        picker.delegate = self
+        return picker
+    }()
+    
+    private let viewForSortButton: UIView = {
+        let viewForSortButton = UIView()
+        viewForSortButton.backgroundColor = .systemGray4
+        viewForSortButton.translatesAutoresizingMaskIntoConstraints = false
+        viewForSortButton.isHidden = true
+        return viewForSortButton
+    }()
+    
+    private let enterButton: UIButton = {
+        let enterButton = UIButton()
+        enterButton.setTitle("Готово", for: .normal)
+        enterButton.backgroundColor = commonColor
+        enterButton.layer.cornerRadius = commonCornerRadius
+        enterButton.translatesAutoresizingMaskIntoConstraints = false
+        enterButton.isHidden = true
+        return enterButton
+    }()
+    
     
     // MARK: - Layout
     
     private func layout() {
-        [table, activityIndicator].forEach { view.addSubview($0) }
+        [table, activityIndicator, subViewForSort].forEach { view.addSubview($0) }
+        
+        subViewHeightConstreint = subViewForSort.heightAnchor.constraint(equalToConstant: 0)
+
+        [picker, viewForSortButton, enterButton].forEach { subViewForSort.addSubview($0)}
         
         NSLayoutConstraint.activate([
             table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -53,8 +91,31 @@ final class ListScreenVC: UIViewController {
             activityIndicator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            subViewHeightConstreint,
+            subViewForSort.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            subViewForSort.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            subViewForSort.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            picker.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),
+            picker.trailingAnchor.constraint(equalTo: subViewForSort.trailingAnchor),
+            picker.bottomAnchor.constraint(equalTo: subViewForSort.bottomAnchor),
+            
+            viewForSortButton.heightAnchor.constraint(equalToConstant: 44),
+            viewForSortButton.topAnchor.constraint(equalTo: subViewForSort.topAnchor),
+            viewForSortButton.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),
+            viewForSortButton.trailingAnchor.constraint(equalTo: subViewForSort.trailingAnchor),
+            viewForSortButton.bottomAnchor.constraint(equalTo: picker.topAnchor),
+            
+            enterButton.widthAnchor.constraint(equalToConstant: 88),
+            enterButton.topAnchor.constraint(equalTo: viewForSortButton.topAnchor, constant: 8),
+            enterButton.trailingAnchor.constraint(equalTo: viewForSortButton.trailingAnchor, constant: -8),
+            enterButton.bottomAnchor.constraint(equalTo: viewForSortButton.bottomAnchor, constant: -8)
         ])
     }
+    
+    
+    // MARK: - Настройка экрана
     
     private func setupScreen() {
         navigationItem.title = "Монеты"
@@ -64,11 +125,45 @@ final class ListScreenVC: UIViewController {
         
         let barButtonLogOut = UIBarButtonItem(image: UIImage(systemName: "figure.walk.arrival"), style: .plain, target: self, action: #selector(logOut))
         navigationItem.leftBarButtonItem = barButtonLogOut
+        
+        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
     }
 }
 
 
-// MARK: - Расширение UITableViewDataSource
+// MARK: - Методы ListScreenVC
+
+extension ListScreenVC {
+    @objc
+    private func sortList() {
+        subViewHeightConstreint.constant = 250
+        viewForSortButton.isHidden = false
+        enterButton.isHidden = false
+    }
+    
+    @objc
+    private func enter() {
+        subViewHeightConstreint.constant = 0
+        viewForSortButton.isHidden = true
+        enterButton.isHidden = true
+    }
+    
+    @objc
+    private func logOut() {
+        RootVCManager.changeRootVC(VCType: LoginScreenVC())
+        
+        let enterStatus = false
+        let key = UDEnterKeys.enterStatus.rawValue
+        UserDefaults.standard.set(enterStatus, forKey: key)
+    }
+    
+    private func showCoin(index: Int) {
+        
+    }
+}
+
+
+// MARK: - Расширение UITableView
 
 extension ListScreenVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,8 +171,8 @@ extension ListScreenVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        #warning("указать колличество ячеек")
-        3
+        #warning("указать колличество ячеек")
+        return 3
     }
     
     
@@ -90,9 +185,6 @@ extension ListScreenVC: UITableViewDataSource {
         return cell
     }
 }
-
-
-// MARK: - Расширение UITableViewDelegate
 
 extension ListScreenVC: UITableViewDelegate {
     //    Возвращает динамическую высоту ячейки
@@ -107,23 +199,18 @@ extension ListScreenVC: UITableViewDelegate {
     }
 }
 
+// MARK: - Расширение UIPickerView
 
-// MARK: - Методы ListScreenVC
-
-extension ListScreenVC {
-    @objc private func sortList() {
-        
+extension ListScreenVC: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
     }
     
-    private func showCoin(index: Int) {
-        
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        2
     }
+}
+
+extension ListScreenVC: UIPickerViewDelegate {
     
-    @objc private func logOut() {
-        RootVCManager.changeRootVC(VCType: LoginScreenVC())
-        
-        let enterStatus = false
-        let key = UDEnterKeys.enterStatus.rawValue
-        UserDefaults.standard.set(enterStatus, forKey: key)
-    }
 }

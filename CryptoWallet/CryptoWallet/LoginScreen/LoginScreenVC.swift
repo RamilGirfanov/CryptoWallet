@@ -66,8 +66,8 @@ final class LoginScreenVC: UIViewController {
     private lazy var enterButton: UIButton = {
         let enterButton = UIButton()
         enterButton.setTitle("Войти", for: .normal)
-        enterButton.backgroundColor = .blue
-        enterButton.layer.cornerRadius = 10
+        enterButton.backgroundColor = commonColor
+        enterButton.layer.cornerRadius = commonCornerRadius
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
         return enterButton

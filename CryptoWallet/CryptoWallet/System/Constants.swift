@@ -14,6 +14,17 @@ extension UIView {
     }
 }
 
+extension UIImageView {
+    func applyBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurEffectView)
+    }
+}
+
+
 // Ключи UserDefaults к свойствам авторизации
 enum UDEnterKeys: String {
     case login
@@ -42,3 +53,5 @@ func setupLoginData() {
 let commonCornerRadius: CGFloat = 10
 
 let commonColor: UIColor = .systemBlue
+
+let commonHeighTapObjects: CGFloat = 44

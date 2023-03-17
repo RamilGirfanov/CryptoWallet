@@ -33,7 +33,7 @@ final class ListScreenVC: UIViewController {
     
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        activityIndicator.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.9)
         activityIndicator.style = .large
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
@@ -125,10 +125,10 @@ final class ListScreenVC: UIViewController {
             table.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            activityIndicator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             subViewForSort.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             subViewForSort.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),

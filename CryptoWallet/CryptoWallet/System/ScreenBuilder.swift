@@ -28,7 +28,7 @@ final class ScreenBuilder {
         case .listScreen:
             let screen = ListScreenVC()
             let VM = ListScreenVM()
-            screen.viewModel = VM
+            screen.VM = VM
             return MyNavigationController(rootViewController: screen)
         }
     }

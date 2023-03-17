@@ -8,8 +8,15 @@
 import Foundation
 
 final class LoginScreenVM: LoginVMProtocol {
+    
+    private let accauntManager = AccauntManager()
+    
+    func setupLoginData() {
+        accauntManager.setupLoginData()
+    }
+    
     func checkData(login: String, pass: String) {
-        let dataStatus: Bool = AccauntManager.shared.checkLoginData(login: login, pass: pass)
+        let dataStatus: Bool = accauntManager.checkLoginData(login: login, pass: pass)
         
         if dataStatus {
             enter()
@@ -17,6 +24,8 @@ final class LoginScreenVM: LoginVMProtocol {
     }
     
     func enter() {
-        AccauntManager.shared.login()
+        accauntManager.login()
     }
+    
+    func out() {}
 }

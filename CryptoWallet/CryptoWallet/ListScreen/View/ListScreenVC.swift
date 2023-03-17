@@ -103,7 +103,7 @@ final class ListScreenVC: UIViewController {
     
     // MARK: - ViewModel
     
-    var viewModel: (ListVMProtocolIn & ListVMProtocolOut)?
+    var VM: (ListVMProtocolIn & ListVMProtocolOut & LoginVMProtocol)?
 #warning("исправить")
     
     
@@ -187,9 +187,7 @@ extension ListScreenVC {
     
     @objc
     private func logOut() {
-        RootVCManager.shared.changeRootVC(VCType: .loginScreen)
-        
-        AccauntManager.shared.logout()
+        VM?.out()
     }
     
     private func showCoin(index: Int) {

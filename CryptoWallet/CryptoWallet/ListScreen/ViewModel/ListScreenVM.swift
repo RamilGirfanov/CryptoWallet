@@ -9,6 +9,8 @@ import Foundation
 
 final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     
+    private let accountManager = AccauntManager()
+    
     private var network = Network()
     var coins = Coins()
         
@@ -66,4 +68,16 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     }
     
     var updateView: (String) -> Void = { _ in }
+}
+
+extension ListScreenVM: LoginVMProtocol {
+    func setupLoginData() {}
+    
+    func checkData(login: String, pass: String) {}
+    
+    func enter() {}
+    
+    func out() {
+        accountManager.logout()
+    }
 }

@@ -15,7 +15,7 @@ final class LoginScreenVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         layout()
-        AccauntManager.shared.setupLoginData()
+        VM?.setupLoginData()
     }
     
     

@@ -191,8 +191,8 @@
 		74E8E9DE29C0DAAF00F10E34 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				74E8E9DF29C0DADE00F10E34 /* ListVMProtocols.swift */,
 				7449913A29C4914F00906553 /* LoginVMProtocol.swift */,
+				74E8E9DF29C0DADE00F10E34 /* ListVMProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

@@ -14,11 +14,7 @@ enum UDEnterKeys: String {
     case enterStatus
 }
 
-class AccauntManager {
-    static let shared = AccauntManager()
-    
-    private init(){}
-    
+struct AccauntManager {    
     // Функция для предустановки логина и пароля
     func setupLoginData() {
         let login = "1234"

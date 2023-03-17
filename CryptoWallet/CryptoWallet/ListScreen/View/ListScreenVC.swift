@@ -40,42 +40,71 @@ final class ListScreenVC: UIViewController {
     
     private let subViewForSort: UIView = {
         let subViewForSort = UIView()
+        subViewForSort.backgroundColor = .clear
+        subViewForSort.layer.cornerRadius = commonCornerRadius
         subViewForSort.translatesAutoresizingMaskIntoConstraints = false
+        subViewForSort.isHidden = true
         return subViewForSort
     }()
     
-    private var subViewHeightConstreint = NSLayoutConstraint()
-    
-    private lazy var picker: UIPickerView = {
-        let picker = UIPickerView()
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.dataSource = self
-        picker.delegate = self
-        return picker
+    private let stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.spacing = 2
+        stack.backgroundColor = .systemGray4
+        stack.layer.cornerRadius = commonCornerRadius
+        stack.clipsToBounds = true
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
-    private let viewForSortButton: UIView = {
-        let viewForSortButton = UIView()
-        viewForSortButton.backgroundColor = .systemGray4
-        viewForSortButton.translatesAutoresizingMaskIntoConstraints = false
-        viewForSortButton.isHidden = true
-        return viewForSortButton
+    private let sortLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Сортировка"
+        label.textColor = .secondaryLabel
+        label.backgroundColor = .systemGray5
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    private let enterButton: UIButton = {
-        let enterButton = UIButton()
-        enterButton.setTitle("Готово", for: .normal)
-        enterButton.backgroundColor = commonColor
-        enterButton.layer.cornerRadius = commonCornerRadius
-        enterButton.translatesAutoresizingMaskIntoConstraints = false
-        enterButton.isHidden = true
-        return enterButton
+    private lazy var firstSortButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Изменение цены за 24 часа", for: .normal)
+        button.setTitleColor(commonColor, for: .normal)
+        button.backgroundColor = .systemGray5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(firstSort), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var secondSortButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Изменение цены за 1 час", for: .normal)
+        button.setTitleColor(commonColor, for: .normal)
+        button.backgroundColor = .systemGray5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(secondSort), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var canselButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Отмена", for: .normal)
+        button.setTitleColor(commonColor, for: .normal)
+        button.backgroundColor = .systemGray5
+        button.layer.cornerRadius = commonCornerRadius
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(cansel), for: .touchUpInside)
+        return button
     }()
     
     
     // MARK: - ViewModel
     
     var viewModel: (VMProtocolIn & VMProtocolOut)?
+#warning("исправить")
     
     
     // MARK: - Layout
@@ -83,9 +112,9 @@ final class ListScreenVC: UIViewController {
     private func layout() {
         [table, activityIndicator, subViewForSort].forEach { view.addSubview($0) }
         
-        subViewHeightConstreint = subViewForSort.heightAnchor.constraint(equalToConstant: 0)
-
-        [picker, viewForSortButton, enterButton].forEach { subViewForSort.addSubview($0)}
+        [stack, canselButton].forEach { subViewForSort.addSubview($0)}
+        
+        [sortLabel, firstSortButton, secondSortButton].forEach {stack.addArrangedSubview($0)}
         
         NSLayoutConstraint.activate([
             table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -98,25 +127,23 @@ final class ListScreenVC: UIViewController {
             activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            subViewHeightConstreint,
-            subViewForSort.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            subViewForSort.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            subViewForSort.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            subViewForSort.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             subViewForSort.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            picker.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),
-            picker.trailingAnchor.constraint(equalTo: subViewForSort.trailingAnchor),
-            picker.bottomAnchor.constraint(equalTo: subViewForSort.bottomAnchor),
+            sortLabel.heightAnchor.constraint(equalToConstant: commonHeighTapObjects / 1.5),
+            firstSortButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
+            secondSortButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
+            canselButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
             
-            viewForSortButton.heightAnchor.constraint(equalToConstant: 44),
-            viewForSortButton.topAnchor.constraint(equalTo: subViewForSort.topAnchor),
-            viewForSortButton.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),
-            viewForSortButton.trailingAnchor.constraint(equalTo: subViewForSort.trailingAnchor),
-            viewForSortButton.bottomAnchor.constraint(equalTo: picker.topAnchor),
+            stack.topAnchor.constraint(equalTo: subViewForSort.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: subViewForSort.trailingAnchor),
             
-            enterButton.widthAnchor.constraint(equalToConstant: 88),
-            enterButton.topAnchor.constraint(equalTo: viewForSortButton.topAnchor, constant: 8),
-            enterButton.trailingAnchor.constraint(equalTo: viewForSortButton.trailingAnchor, constant: -8),
-            enterButton.bottomAnchor.constraint(equalTo: viewForSortButton.bottomAnchor, constant: -8)
+            canselButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 8),
+            canselButton.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),
+            canselButton.trailingAnchor.constraint(equalTo: subViewForSort.trailingAnchor),
+            canselButton.bottomAnchor.constraint(equalTo: subViewForSort.bottomAnchor)
         ])
     }
     
@@ -131,8 +158,6 @@ final class ListScreenVC: UIViewController {
         
         let barButtonLogOut = UIBarButtonItem(image: UIImage(systemName: "figure.walk.arrival"), style: .plain, target: self, action: #selector(logOut))
         navigationItem.leftBarButtonItem = barButtonLogOut
-        
-        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
     }
 }
 
@@ -142,21 +167,27 @@ final class ListScreenVC: UIViewController {
 extension ListScreenVC {
     @objc
     private func sortList() {
-        subViewHeightConstreint.constant = 250
-        viewForSortButton.isHidden = false
-        enterButton.isHidden = false
+        subViewForSort.isHidden = false
     }
     
     @objc
-    private func enter() {
-        subViewHeightConstreint.constant = 0
-        viewForSortButton.isHidden = true
-        enterButton.isHidden = true
+    private func firstSort() {
+        
+    }
+    
+    @objc
+    private func secondSort() {
+        
+    }
+    
+    @objc
+    private func cansel() {
+        subViewForSort.isHidden = true
     }
     
     @objc
     private func logOut() {
-        RootVCManager.changeRootVC(VCType: LoginScreenVC())
+        RootVCManager.changeRootVC(VCType: .loginScreen)
         
         let enterStatus = false
         let key = UDEnterKeys.enterStatus.rawValue
@@ -164,11 +195,11 @@ extension ListScreenVC {
     }
     
     private func showCoin(index: Int) {
-        
+#warning("указать колличество ячеек")
     }
     
     private func lisenViewModel() {
-        #warning("Настроить")
+#warning("Настроить")
     }
 }
 
@@ -181,7 +212,7 @@ extension ListScreenVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #warning("указать колличество ячеек")
+#warning("указать колличество ячеек")
         return 3
     }
     
@@ -190,7 +221,7 @@ extension ListScreenVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell
         guard let cell = cell else { return UITableViewCell() }
         
-//        cell.pullCell(coinData: <#T##<<error type>>#>)
+        //        cell.pullCell(coinData: <#T##<<error type>>#>)
         
         return cell
     }
@@ -207,43 +238,4 @@ extension ListScreenVC: UITableViewDelegate {
         showCoin(index: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-
-// MARK: - Методы ListScreenVC
-
-extension ListScreenVC {
-    @objc
-    private func sortList() {
-        #warning("Настроить")
-    }
-
-    @objc
-    private func logOut() {
-        RootVCManager.changeRootVC(VCType: .loginScreen)
-        
-        let enterStatus = false
-        let key = UDEnterKeys.enterStatus.rawValue
-        UserDefaults.standard.set(enterStatus, forKey: key)
-        
-            
-    private func showCoin(index: Int) {
-        #warning("Настроить")
-    }
-    
-// MARK: - Расширение UIPickerView
-
-extension ListScreenVC: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        2
-    }
-}
-
-extension ListScreenVC: UIPickerViewDelegate {
-    
-
 }

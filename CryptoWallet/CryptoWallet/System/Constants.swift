@@ -14,6 +14,17 @@ extension UIView {
     }
 }
 
+extension UIImageView {
+    func applyBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurEffectView)
+    }
+}
+
+
 // Ключи UserDefaults к свойствам авторизации
 enum UDEnterKeys: String {
     case login
@@ -33,12 +44,14 @@ func setupLoginData() {
 }
 
 // Функция получения списка монет
-func getCoinList() -> [String] {
-    let coinList = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
-    return coinList
-}
+//func getCoinList() -> [String] {
+//    let coinList = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
+//    return coinList
+//}
 
 
 let commonCornerRadius: CGFloat = 10
 
 let commonColor: UIColor = .systemBlue
+
+let commonHeighTapObjects: CGFloat = 44

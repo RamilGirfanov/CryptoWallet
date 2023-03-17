@@ -21,10 +21,19 @@ final class LoginScreenVC: UIViewController {
     
     // MARK: - UIObjects
     
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "loginBackgroundImage")
+        imageView.applyBlurEffect()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private let label: UILabel = {
         let label = UILabel()
         label.text = "Вход"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 30)
+//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -33,9 +42,11 @@ final class LoginScreenVC: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
+//        stack.spacing = 2
         stack.layer.cornerRadius = 10
         stack.clipsToBounds = true
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.backgroundColor = .systemGray6
         stack.layer.borderColor = UIColor.lightGray.cgColor
         stack.layer.borderWidth = 0.5
         return stack
@@ -44,10 +55,11 @@ final class LoginScreenVC: UIViewController {
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
-        loginTextField.backgroundColor = .systemGray6
+        loginTextField.backgroundColor = .clear
+        loginTextField.borderStyle = .roundedRect
         loginTextField.autocapitalizationType = .none
-        loginTextField.layer.borderColor = UIColor.lightGray.cgColor
-        loginTextField.layer.borderWidth = 0.5
+//        loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+//        loginTextField.layer.borderWidth = 0.5
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         return loginTextField
     }()
@@ -55,10 +67,11 @@ final class LoginScreenVC: UIViewController {
     let passTextField: UITextField = {
         let passTextField = UITextField()
         passTextField.placeholder = "Введите пароль"
-        passTextField.backgroundColor = .systemGray6
+        passTextField.backgroundColor = .clear
         passTextField.isSecureTextEntry = true
-        passTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passTextField.layer.borderWidth = 0.5
+        passTextField.borderStyle = .roundedRect
+//        passTextField.layer.borderColor = UIColor.lightGray.cgColor
+//        passTextField.layer.borderWidth = 0.5
         passTextField.translatesAutoresizingMaskIntoConstraints = false
         return passTextField
     }()
@@ -77,17 +90,22 @@ final class LoginScreenVC: UIViewController {
     // MARK: - Layout
     
     private func layout() {
-        [label, stack, enterButton].forEach { view.addSubview($0) }
+        [imageView, label, stack, enterButton].forEach { view.addSubview($0) }
         
         [loginTextField, passTextField].forEach { stack.addArrangedSubview($0) }
         
         let safeIndent: CGFloat = 16
         
         NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            stack.heightAnchor.constraint(equalToConstant: commonHeighTapObjects * 2),
             stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
             stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
-            stack.heightAnchor.constraint(equalToConstant: 100),
             
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -safeIndent),
@@ -95,7 +113,7 @@ final class LoginScreenVC: UIViewController {
             enterButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: safeIndent),
             enterButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
             enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
-            enterButton.heightAnchor.constraint(equalToConstant: 44)
+            enterButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects)
         ])
     }
     

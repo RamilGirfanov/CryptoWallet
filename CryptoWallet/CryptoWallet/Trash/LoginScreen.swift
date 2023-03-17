@@ -64,7 +64,7 @@ final class LoginScreen: UIView {
         return passTextField
     }()
     
-    private let enterButton: UIButton = {
+    private let canselButton: UIButton = {
         let enterButton = UIButton()
         enterButton.setTitle("Войти", for: .normal)
         enterButton.backgroundColor = .blue

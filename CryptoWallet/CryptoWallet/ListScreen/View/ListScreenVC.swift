@@ -33,6 +33,9 @@ final class ListScreenVC: UIViewController {
     
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        activityIndicator.style = .large
+        activityIndicator.startAnimating()
         activityIndicator.isHidden = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
@@ -197,6 +200,11 @@ extension ListScreenVC {
     private func lisenViewModel() {
 #warning("Настроить")
     }
+    
+    private func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
 }
 
 
@@ -209,7 +217,7 @@ extension ListScreenVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 #warning("указать колличество ячеек")
-        return 3
+        return 10
     }
     
     

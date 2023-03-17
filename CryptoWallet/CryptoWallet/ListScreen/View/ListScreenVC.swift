@@ -187,7 +187,7 @@ extension ListScreenVC {
     
     @objc
     private func logOut() {
-        RootVCManager.changeRootVC(VCType: .loginScreen)
+        RootVCManager.shared.changeRootVC(VCType: .loginScreen)
         
         let enterStatus = false
         let key = UDEnterKeys.enterStatus.rawValue

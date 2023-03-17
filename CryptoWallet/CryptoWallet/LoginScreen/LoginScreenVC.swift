@@ -125,7 +125,7 @@ final class LoginScreenVC: UIViewController {
         let enterDataStatus = chekLoginData()
         
         if enterDataStatus {
-            RootVCManager.changeRootVC(VCType: .listScreen)
+            RootVCManager.shared.changeRootVC(VCType: .listScreen)
             
             let enterStatus = true
             let key = UDEnterKeys.enterStatus.rawValue

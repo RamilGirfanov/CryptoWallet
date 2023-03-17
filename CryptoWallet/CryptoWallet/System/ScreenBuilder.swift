@@ -13,7 +13,12 @@ enum VCType {
 }
 
 final class ScreenBuilder {
-    static func buildScreen(VCType: VCType) -> UINavigationController {
+    static let shared = ScreenBuilder()
+    
+    private init() {}
+    
+    func buildScreen(VCType: VCType) -> UINavigationController {
+        
         
         switch VCType {
         case .loginScreen:
@@ -29,7 +34,11 @@ final class ScreenBuilder {
 }
 
 final class RootVCManager {
-    static func changeRootVC(VCType: VCType) {
+    static let shared = RootVCManager()
+    
+    private init() {}
+    
+    func changeRootVC(VCType: VCType) {
         
         var sceneDelegate: SceneDelegate? {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -39,9 +48,9 @@ final class RootVCManager {
         
         switch VCType {
         case .loginScreen:
-            sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: .loginScreen)
+            sceneDelegate?.window?.rootViewController = ScreenBuilder.shared.buildScreen(VCType: .loginScreen)
         case .listScreen:
-            sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: .listScreen)
+            sceneDelegate?.window?.rootViewController = ScreenBuilder.shared.buildScreen(VCType: .listScreen)
         }
     }
 }

@@ -15,7 +15,7 @@ final class LoginScreenVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         layout()
-        setupLoginData()
+        AccauntManager.shared.setupLoginData()
     }
     
     
@@ -33,7 +33,6 @@ final class LoginScreenVC: UIViewController {
         let label = UILabel()
         label.text = "Вход"
         label.font = .systemFont(ofSize: 30)
-//        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,7 +41,6 @@ final class LoginScreenVC: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
-//        stack.spacing = 2
         stack.layer.cornerRadius = 10
         stack.clipsToBounds = true
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -58,8 +56,6 @@ final class LoginScreenVC: UIViewController {
         loginTextField.backgroundColor = .clear
         loginTextField.borderStyle = .roundedRect
         loginTextField.autocapitalizationType = .none
-//        loginTextField.layer.borderColor = UIColor.lightGray.cgColor
-//        loginTextField.layer.borderWidth = 0.5
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         return loginTextField
     }()
@@ -70,8 +66,6 @@ final class LoginScreenVC: UIViewController {
         passTextField.backgroundColor = .clear
         passTextField.isSecureTextEntry = true
         passTextField.borderStyle = .roundedRect
-//        passTextField.layer.borderColor = UIColor.lightGray.cgColor
-//        passTextField.layer.borderWidth = 0.5
         passTextField.translatesAutoresizingMaskIntoConstraints = false
         return passTextField
     }()
@@ -127,35 +121,27 @@ final class LoginScreenVC: UIViewController {
         if enterDataStatus {
             RootVCManager.shared.changeRootVC(VCType: .listScreen)
             
-            let enterStatus = true
-            let key = UDEnterKeys.enterStatus.rawValue
-            UserDefaults.standard.set(enterStatus, forKey: key)
+            AccauntManager.shared.login()
         }
     }
     
-//    Функция проверки корректности логина и пароля
+    // Функция проверки корректности логина и пароля
     private func chekLoginData() -> Bool {
         var dataStatus = false
         
-//      Проверка на заполненность
-        guard loginTextField.text?.isEmpty == false else {
+        // Проверка на заполненность логина
+        guard loginTextField.text?.isEmpty == false, let login = loginTextField.text else {
             loginTextField.attributedPlaceholder = NSAttributedString(string: "Введите логин", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             return dataStatus
         }
         
-        guard passTextField.text?.isEmpty == false else {
+        // Проверка на заполненность пароля
+        guard passTextField.text?.isEmpty == false, let pass = passTextField.text else {
             passTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             return dataStatus
         }
         
-//      Проверка на корректность логина
-        let rightLogin = UserDefaults.standard.string(forKey: UDEnterKeys.login.rawValue)
-        guard let rightLogin = rightLogin, loginTextField.text == rightLogin else { return dataStatus }
-        
-//      Проверка на корректность пароля
-        let rightPass = UserDefaults.standard.string(forKey: UDEnterKeys.password.rawValue)
-        guard let rightPass = rightPass, passTextField.text == rightPass else { return dataStatus }
-        dataStatus = true
+        dataStatus = AccauntManager.shared.checkLoginData(login: login, pass: pass)
         
         return dataStatus
     }

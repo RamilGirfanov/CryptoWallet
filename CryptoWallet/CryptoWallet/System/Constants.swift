@@ -14,6 +14,7 @@ extension UIView {
     }
 }
 
+// Расширение для блюра
 extension UIImageView {
     func applyBlurEffect() {
         let blurEffect = UIBlurEffect(style: .regular)
@@ -22,25 +23,6 @@ extension UIImageView {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(blurEffectView)
     }
-}
-
-
-// Ключи UserDefaults к свойствам авторизации
-enum UDEnterKeys: String {
-    case login
-    case password
-    case enterStatus
-}
-
-// Функция для предустановки логина и пароля
-func setupLoginData() {
-    let login = "1234"
-    let loginKey = UDEnterKeys.login.rawValue
-    UserDefaults.standard.set(login, forKey: loginKey)
-    
-    let pass = "1234"
-    let passKey = UDEnterKeys.password.rawValue
-    UserDefaults.standard.set(pass, forKey: passKey)
 }
 
 // Функция получения списка монет

@@ -189,9 +189,7 @@ extension ListScreenVC {
     private func logOut() {
         RootVCManager.shared.changeRootVC(VCType: .loginScreen)
         
-        let enterStatus = false
-        let key = UDEnterKeys.enterStatus.rawValue
-        UserDefaults.standard.set(enterStatus, forKey: key)
+        AccauntManager.shared.logout()
     }
     
     private func showCoin(index: Int) {

@@ -17,6 +17,8 @@
 		7417F8C329B52F6C007D92C4 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7417F8C229B52F6C007D92C4 /* LoginScreen.swift */; };
 		7449913729C39DFC00906553 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449913629C39DFC00906553 /* Coins.swift */; };
 		7449913929C48AC500906553 /* Accaunt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449913829C48AC500906553 /* Accaunt.swift */; };
+		7449913B29C4914F00906553 /* LoginVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449913A29C4914F00906553 /* LoginVMProtocol.swift */; };
+		7449913D29C4928D00906553 /* LoginScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449913C29C4928D00906553 /* LoginScreenVM.swift */; };
 		744E51AB29BA103300BB14E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51AA29BA103300BB14E9 /* Constants.swift */; };
 		744E51AD29BA17A300BB14E9 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51AC29BA17A300BB14E9 /* ListScreen.swift */; };
 		744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51B229BA223F00BB14E9 /* MyNavigationController.swift */; };
@@ -24,7 +26,7 @@
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
 		74E8E9DD29C0D66C00F10E34 /* ListScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DC29C0D66C00F10E34 /* ListScreenVM.swift */; };
-		74E8E9E029C0DADE00F10E34 /* MVVMProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DF29C0DADE00F10E34 /* MVVMProtocols.swift */; };
+		74E8E9E029C0DADE00F10E34 /* ListVMProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DF29C0DADE00F10E34 /* ListVMProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		7417F8C229B52F6C007D92C4 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		7449913629C39DFC00906553 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		7449913829C48AC500906553 /* Accaunt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accaunt.swift; sourceTree = "<group>"; };
+		7449913A29C4914F00906553 /* LoginVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVMProtocol.swift; sourceTree = "<group>"; };
+		7449913C29C4928D00906553 /* LoginScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenVM.swift; sourceTree = "<group>"; };
 		744E51AA29BA103300BB14E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		744E51AC29BA17A300BB14E9 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
 		744E51B229BA223F00BB14E9 /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
@@ -47,7 +51,7 @@
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		74E8E9DC29C0D66C00F10E34 /* ListScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreenVM.swift; sourceTree = "<group>"; };
-		74E8E9DF29C0DADE00F10E34 /* MVVMProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMProtocols.swift; sourceTree = "<group>"; };
+		74E8E9DF29C0DADE00F10E34 /* ListVMProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVMProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 		7417F8C129B52F34007D92C4 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7449913C29C4928D00906553 /* LoginScreenVM.swift */,
 				7417F8B129B4C0B3007D92C4 /* LoginScreenVC.swift */,
 			);
 			path = LoginScreen;
@@ -186,7 +191,8 @@
 		74E8E9DE29C0DAAF00F10E34 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				74E8E9DF29C0DADE00F10E34 /* MVVMProtocols.swift */,
+				74E8E9DF29C0DADE00F10E34 /* ListVMProtocols.swift */,
+				7449913A29C4914F00906553 /* LoginVMProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -271,10 +277,12 @@
 				7449913929C48AC500906553 /* Accaunt.swift in Sources */,
 				7417F8C329B52F6C007D92C4 /* LoginScreen.swift in Sources */,
 				7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */,
+				7449913B29C4914F00906553 /* LoginVMProtocol.swift in Sources */,
 				7449913729C39DFC00906553 /* Coins.swift in Sources */,
 				7417F8AE29B4C0B3007D92C4 /* AppDelegate.swift in Sources */,
 				7417F8B029B4C0B3007D92C4 /* SceneDelegate.swift in Sources */,
-				74E8E9E029C0DADE00F10E34 /* MVVMProtocols.swift in Sources */,
+				7449913D29C4928D00906553 /* LoginScreenVM.swift in Sources */,
+				74E8E9E029C0DADE00F10E34 /* ListVMProtocols.swift in Sources */,
 				744E51AB29BA103300BB14E9 /* Constants.swift in Sources */,
 				744E51AD29BA17A300BB14E9 /* ListScreen.swift in Sources */,
 			);

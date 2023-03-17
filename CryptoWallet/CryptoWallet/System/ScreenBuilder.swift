@@ -19,10 +19,11 @@ final class ScreenBuilder {
     
     func buildScreen(VCType: VCType) -> UINavigationController {
         
-        
         switch VCType {
         case .loginScreen:
             let screen = LoginScreenVC()
+            let VM = LoginScreenVM()
+            screen.VM = VM
             return MyNavigationController(rootViewController: screen)
         case .listScreen:
             let screen = ListScreenVC()

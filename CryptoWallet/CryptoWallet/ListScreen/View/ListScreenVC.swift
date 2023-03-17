@@ -103,7 +103,7 @@ final class ListScreenVC: UIViewController {
     
     // MARK: - ViewModel
     
-    var viewModel: (VMProtocolIn & VMProtocolOut)?
+    var viewModel: (ListVMProtocolIn & ListVMProtocolOut)?
 #warning("исправить")
     
     

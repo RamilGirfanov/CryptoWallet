@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ListScreenVM: VMProtocolIn, VMProtocolOut {
+final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     
     private var network = Network()
     var coins = Coins()

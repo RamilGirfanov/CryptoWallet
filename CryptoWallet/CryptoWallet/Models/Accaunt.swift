@@ -29,20 +29,26 @@ class AccauntManager {
         let passKey = UDEnterKeys.password.rawValue
         UserDefaults.standard.set(pass, forKey: passKey)
     }
-
     
+    // Функция для входа
     func login() {
         let enterStatus = true
         let key = UDEnterKeys.enterStatus.rawValue
         UserDefaults.standard.set(enterStatus, forKey: key)
+        
+        RootVCManager.shared.changeRootVC(VCType: .listScreen)
     }
     
+    // Функция для выхода
     func logout() {
         let enterStatus = false
         let key = UDEnterKeys.enterStatus.rawValue
         UserDefaults.standard.set(enterStatus, forKey: key)
+        
+        RootVCManager.shared.changeRootVC(VCType: .loginScreen)
     }
     
+    // Функция для проверки логина и пароля
     func checkLoginData(login: String, pass: String) -> Bool {
         // Проверка на корректность логина
         let rightLogin = UserDefaults.standard.string(forKey: UDEnterKeys.login.rawValue)

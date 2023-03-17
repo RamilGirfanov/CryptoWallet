@@ -81,6 +81,10 @@ final class LoginScreenVC: UIViewController {
     }()
     
     
+    // MARK: - ViewModel
+    
+    var VM: LoginVMProtocol?
+    
     // MARK: - Layout
     
     private func layout() {
@@ -116,33 +120,21 @@ final class LoginScreenVC: UIViewController {
     
     @objc
     private func enter() {
-        let enterDataStatus = chekLoginData()
-        
-        if enterDataStatus {
-            RootVCManager.shared.changeRootVC(VCType: .listScreen)
-            
-            AccauntManager.shared.login()
-        }
-    }
-    
-    // Функция проверки корректности логина и пароля
-    private func chekLoginData() -> Bool {
-        var dataStatus = false
         
         // Проверка на заполненность логина
-        guard loginTextField.text?.isEmpty == false, let login = loginTextField.text else {
+        if loginTextField.text?.isEmpty == true {
             loginTextField.attributedPlaceholder = NSAttributedString(string: "Введите логин", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            return dataStatus
         }
         
         // Проверка на заполненность пароля
-        guard passTextField.text?.isEmpty == false, let pass = passTextField.text else {
+        if passTextField.text?.isEmpty == true {
             passTextField.attributedPlaceholder = NSAttributedString(string: "Введите пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            return dataStatus
         }
         
-        dataStatus = AccauntManager.shared.checkLoginData(login: login, pass: pass)
+        guard let login = loginTextField.text else { return }
+        guard let pass = passTextField.text else { return }
         
-        return dataStatus
+        VM?.checkData(login: login, pass: pass)
     }
+    
 }

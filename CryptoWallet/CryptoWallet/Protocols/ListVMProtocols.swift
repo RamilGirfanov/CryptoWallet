@@ -1,5 +1,5 @@
 //
-//  MVVMProtocols.swift
+//  ListVMProtocols.swift
 //  CryptoWallet
 //
 //  Created by Рамиль Гирфанов on 14.03.2023.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-protocol VMProtocolIn {
+protocol ListVMProtocolIn {
     func getData()
 }
 
-protocol VMProtocolOut {
+protocol ListVMProtocolOut {
     var updateView: (String) -> Void { get set }
 }

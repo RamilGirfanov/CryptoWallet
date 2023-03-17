@@ -52,7 +52,7 @@ final class ListScreenVC: UIViewController {
         stack.axis = .vertical
         stack.distribution = .equalSpacing
         stack.spacing = 2
-        stack.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
+        stack.backgroundColor = .systemGray4
         stack.layer.cornerRadius = commonCornerRadius
         stack.clipsToBounds = true
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +62,8 @@ final class ListScreenVC: UIViewController {
     private let sortLabel: UILabel = {
         let label = UILabel()
         label.text = "Сортировка"
+        label.textColor = .secondaryLabel
+        label.backgroundColor = .systemGray5
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -70,7 +72,8 @@ final class ListScreenVC: UIViewController {
     private lazy var firstSortButton: UIButton = {
         let button = UIButton()
         button.setTitle("Изменение цены за 24 часа", for: .normal)
-        button.backgroundColor = commonColor
+        button.setTitleColor(commonColor, for: .normal)
+        button.backgroundColor = .systemGray5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(firstSort), for: .touchUpInside)
         return button
@@ -79,7 +82,8 @@ final class ListScreenVC: UIViewController {
     private lazy var secondSortButton: UIButton = {
         let button = UIButton()
         button.setTitle("Изменение цены за 1 час", for: .normal)
-        button.backgroundColor = commonColor
+        button.setTitleColor(commonColor, for: .normal)
+        button.backgroundColor = .systemGray5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(secondSort), for: .touchUpInside)
         return button
@@ -88,7 +92,8 @@ final class ListScreenVC: UIViewController {
     private lazy var canselButton: UIButton = {
         let button = UIButton()
         button.setTitle("Отмена", for: .normal)
-        button.backgroundColor = commonColor
+        button.setTitleColor(commonColor, for: .normal)
+        button.backgroundColor = .systemGray5
         button.layer.cornerRadius = commonCornerRadius
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cansel), for: .touchUpInside)
@@ -126,9 +131,10 @@ final class ListScreenVC: UIViewController {
             subViewForSort.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             subViewForSort.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            firstSortButton.heightAnchor.constraint(equalToConstant: 44),
-            secondSortButton.heightAnchor.constraint(equalToConstant: 44),
-            canselButton.heightAnchor.constraint(equalToConstant: 44),
+            sortLabel.heightAnchor.constraint(equalToConstant: commonHeighTapObjects / 1.5),
+            firstSortButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
+            secondSortButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
+            canselButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
             
             stack.topAnchor.constraint(equalTo: subViewForSort.topAnchor),
             stack.leadingAnchor.constraint(equalTo: subViewForSort.leadingAnchor),

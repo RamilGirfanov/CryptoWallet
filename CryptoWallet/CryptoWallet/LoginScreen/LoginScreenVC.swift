@@ -24,6 +24,7 @@ final class LoginScreenVC: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "loginBackgroundImage")
+        imageView.contentMode = .scaleAspectFill
         imageView.applyBlurEffect()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

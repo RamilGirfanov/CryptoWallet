@@ -217,7 +217,7 @@ extension ListScreenVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell
         guard let cell = cell else { return UITableViewCell() }
         
-        //        cell.pullCell(coinData: <#T##<<error type>>#>)
+        cell.pullCell()
         
         return cell
     }

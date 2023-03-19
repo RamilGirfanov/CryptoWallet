@@ -54,6 +54,9 @@ final class LoginScreenVC: UIViewController {
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
+        if let image = UIImage(named: "loginBackgroundImage") {
+            loginTextField.textColor = UIColor(patternImage: image)
+        }
         loginTextField.backgroundColor = .clear
         loginTextField.borderStyle = .roundedRect
         loginTextField.autocapitalizationType = .none
@@ -64,6 +67,9 @@ final class LoginScreenVC: UIViewController {
     let passTextField: UITextField = {
         let passTextField = UITextField()
         passTextField.placeholder = "Введите пароль"
+        if let image = UIImage(named: "loginBackgroundImage") {
+            passTextField.textColor = UIColor(patternImage: image)
+        }
         passTextField.backgroundColor = .clear
         passTextField.isSecureTextEntry = true
         passTextField.borderStyle = .roundedRect

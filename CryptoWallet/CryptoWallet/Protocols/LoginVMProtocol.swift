@@ -8,8 +8,6 @@
 import Foundation
 
 protocol LoginVMProtocol {
-    func setupLoginData()
-    func checkData(login: String, pass: String)
-    func enter()
+    func enter(login: String, pass: String)
     func out()
 }

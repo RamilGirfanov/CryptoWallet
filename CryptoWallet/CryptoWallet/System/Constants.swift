@@ -25,12 +25,6 @@ extension UIImageView {
     }
 }
 
-// Функция получения списка монет
-//func getCoinList() -> [String] {
-//    let coinList = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
-//    return coinList
-//}
-
 
 let commonCornerRadius: CGFloat = 10
 

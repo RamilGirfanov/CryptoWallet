@@ -12,31 +12,43 @@ enum VCType {
     case listScreen
 }
 
+enum Models {
+    static let account = Account()
+    static let network = Network()
+}
+
 final class ScreenBuilder {
     static let shared = ScreenBuilder()
-    
     private init() {}
     
-    func buildScreen(VCType: VCType) -> UINavigationController {
+    // Функция для предустановки логина и пароля
+    func setupLoginData() {
+        let login = "1234"
+        let loginKey = UDEnterKeys.login.rawValue
+        UserDefaults.standard.set(login, forKey: loginKey)
         
+        let pass = "1234"
+        let passKey = UDEnterKeys.password.rawValue
+        UserDefaults.standard.set(pass, forKey: passKey)
+    }
+    
+    func buildScreen(VCType: VCType) -> UINavigationController {
         switch VCType {
         case .loginScreen:
-            let screen = LoginScreenVC()
-            let VM = LoginScreenVM()
-            screen.VM = VM
+            let viewModel = LoginScreenVM(account: Models.account)
+            let screen = LoginScreenVC(viewModel: viewModel)
             return MyNavigationController(rootViewController: screen)
         case .listScreen:
-            let screen = ListScreenVC()
-            let VM = ListScreenVM()
-            screen.VM = VM
+            let viewModel = ListScreenVM()
+            let screen = ListScreenVC(viewModel: viewModel)
             return MyNavigationController(rootViewController: screen)
         }
     }
 }
 
+
 final class RootVCManager {
     static let shared = RootVCManager()
-    
     private init() {}
     
     func changeRootVC(VCType: VCType) {

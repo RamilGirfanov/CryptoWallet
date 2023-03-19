@@ -7,9 +7,24 @@
 
 import Foundation
 
-struct Network {    
+struct Network {
+    let coinList = ["btc",
+                    "eth",
+                    "tron",
+                    "luna",
+                    "polkadot",
+                    "dogecoin",
+                    "tether",
+                    "stellar",
+                    "cardano",
+                    "xrp"]
+    
     var coin: String = ""
     
+    
+}
+
+extension Network {
     var urlString: String {
         "https://data.messari.io/api/v1/assets/\(coin)/metrics"
     }

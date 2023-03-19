@@ -34,8 +34,6 @@ final class CoinCell: UITableViewCell {
     
     private let coinImage: UIImageView = {
         let image = UIImageView()
-//        image.layer.cornerRadius = coinImage.frame.size.height / 2
-//        image.clipsToBounds = true
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -67,33 +65,7 @@ final class CoinCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    /*
-    private let thridStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 2
-        stack.distribution = .fillProportionally
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
     
-    private let iconImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(systemName: "distribute.horizontal.center")
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    private let fourthStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 2
-        stack.distribution = .fillProportionally
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    */
     private let change1hPriceLabel: UILabel = {
         let label = UILabel()
         label.text = "За 1ч: "
@@ -112,7 +84,6 @@ final class CoinCell: UITableViewCell {
         return label
     }()
 
-    
     
     // MARK: - Layout
     
@@ -147,10 +118,5 @@ final class CoinCell: UITableViewCell {
         priceLabel.text = "$\(fakeCoin.price)"
         change1hPriceLabel.text = "Изменение цены за 1ч: \(fakeCoin.cange1h)"
         change24hPriceLabel.text = "Изменение цены за 24ч: \(fakeCoin.cange24h)"
-        
-        
-//        nameLabel.text = coinData.coinName
-//        priceLabel.text = coinData.price
-//        changePriceLabel.text = coinData.changePrice
     }
 }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct CoinData {
-    let data: Data
+struct CoinData: Decodable {
+    let data: DataModel
 }
 
-struct Data {
+struct DataModel: Decodable {
     let symbol: String
     let name: String
-    let market_data: MarketData
+    let marketData: MarketData
     
     enum CodingKeys: String, CodingKey {
         case symbol
@@ -23,7 +23,7 @@ struct Data {
     }
 }
 
-struct MarketData {
+struct MarketData: Decodable {
     let priceUsd: Double
     let percentChangeUsdLast1Hour: Double
     let percentChangeUsdLast24Hours: Double

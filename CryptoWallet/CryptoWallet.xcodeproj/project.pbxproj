@@ -28,6 +28,7 @@
 		74522EED29C72E46003BC12C /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EEC29C72E46003BC12C /* NetworkConstants.swift */; };
 		74522EEF29C72E91003BC12C /* CryptoCoiun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EEE29C72E91003BC12C /* CryptoCoiun.swift */; };
 		74522EF229C75956003BC12C /* ListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF129C75956003BC12C /* ListScreenView.swift */; };
+		74522EF429C9AE53003BC12C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF329C9AE53003BC12C /* Coin.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
@@ -59,6 +60,7 @@
 		74522EEC29C72E46003BC12C /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		74522EEE29C72E91003BC12C /* CryptoCoiun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoiun.swift; sourceTree = "<group>"; };
 		74522EF129C75956003BC12C /* ListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreenView.swift; sourceTree = "<group>"; };
+		74522EF329C9AE53003BC12C /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				7449913829C48AC500906553 /* Account.swift */,
 				74E8E9DA29C0CE0F00F10E34 /* Network.swift */,
 				7449913629C39DFC00906553 /* CoinData.swift */,
+				74522EF329C9AE53003BC12C /* Coin.swift */,
 				74522EF029C74301003BC12C /* Danya */,
 			);
 			path = Models;
@@ -282,6 +285,7 @@
 				744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */,
 				7449913929C48AC500906553 /* Account.swift in Sources */,
 				7417F8C329B52F6C007D92C4 /* LoginScreen.swift in Sources */,
+				74522EF429C9AE53003BC12C /* Coin.swift in Sources */,
 				7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */,
 				7449913B29C4914F00906553 /* LoginVMProtocol.swift in Sources */,
 				7449913729C39DFC00906553 /* CoinData.swift in Sources */,

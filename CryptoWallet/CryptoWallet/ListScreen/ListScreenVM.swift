@@ -9,27 +9,19 @@ import Foundation
 
 final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     
+    // MARK: - Models
+    
     private var account = Account()
     
     private var network = Network()
     
-    var completionHandler: ((String, String, Data) -> Void)?
+    
+    var coinArray: [Coin] = []
     
     
-    //    var coins = CoinData()
-    
-    //    private var dataArray: [Data] = []
     
     
     // Функция возвращающая массив URL
-    
-    private func getCoins() {
-//        NetworkManager.shared.getAllCoinsData { coints in
-//            print(coints)
-        }
-    
-    
-    
     private func getUrlArray() -> [URL] {
         var urlArray: [URL] = []
         
@@ -43,31 +35,42 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
         return urlArray
     }
     
-    private func parseJSON(data: Data) {
+//    Функция пасинга JSON данных
+    private func parseJSON(data: Data) -> Coin? {
+        let decoder = JSONDecoder()
         
+        do {
+            let coinData = try decoder.decode(CoinData.self, from: data)
+            let coin = Coin(coinData: coinData)
+            return coin
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return nil
     }
     
     
     // MARK: - VMProcols
     
+    var updateView: ([Coin]) -> Void = { _ in }
+    
     func getData() {
-//        let urlArray = getUrlArray()
-//        guard !urlArray.isEmpty else { return }
-//
-//        let session = URLSession(configuration: .default)
-//
-//        urlArray.forEach { [weak self] url in
-//            let task = session.dataTask(with: url) { data, response, error in
-//                if let data {
-//                    #warning("передать данные в VC")
-//                    self?.dataArray.append(data)
-//                }
-//            }
-//            task.resume()
-//        }
+        
+        guard let url = URL(string: network.urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            if let data = data {
+                if let coin = self.parseJSON(data: data) {
+                    self.coinArray.append(coin)
+                    self.updateView(self.coinArray)
+                }
+            }
+        }.resume()
+        #warning("решить через многопоточность")
+//        updateView(coinArray)
     }
     
-    var updateView: (String) -> Void = { _ in }
 }
 
 extension ListScreenVM: LoginVMProtocol {

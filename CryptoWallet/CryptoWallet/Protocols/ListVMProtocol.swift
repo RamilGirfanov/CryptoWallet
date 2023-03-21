@@ -12,5 +12,6 @@ protocol ListVMProtocolIn {
 }
 
 protocol ListVMProtocolOut {
-    var updateView: (String) -> Void { get set }
+    var updateView: ([Coin]) -> Void { get set }
+//    var updateView: (([Coin]) -> Void)? { get set }
 }

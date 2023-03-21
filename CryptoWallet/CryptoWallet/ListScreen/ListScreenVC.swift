@@ -12,6 +12,9 @@ final class ListScreenVC: UIViewController {
     // MARK: - ViewModel
     private var viewModel: (ListVMProtocolIn & ListVMProtocolOut & LoginVMProtocol)?
     
+//    Массив для обновления tableView
+    private var coinArray: [Coin] = []
+    
     
     // MARK: - View
     private lazy var listScreen: ListScreen = {
@@ -44,7 +47,11 @@ final class ListScreenVC: UIViewController {
         addTargets()
         
         viewModel?.getData()
-        lisenViewModel()
+        viewModel?.updateView = { [weak self] coinArray in
+            guard let self = self else { return }
+            self.coinArray = coinArray
+            self.updateView()
+        }
     }
     
     
@@ -67,12 +74,6 @@ final class ListScreenVC: UIViewController {
         
         navigationItem.leftBarButtonItem = barButtonLogOut
     }
-}
-
-
-// MARK: - Функционал
-
-extension ListScreenVC {
     
     private func addTargets() {
         listScreen.firstSortButton.addTarget(self,
@@ -87,19 +88,23 @@ extension ListScreenVC {
                                           action: #selector(cansel),
                                           for: .touchUpInside)
     }
-    
+}
+
+
+// MARK: - Функционал
+
+extension ListScreenVC {
         
     private func showCoin(index: Int) {
-
+        
     }
     
-    private func lisenViewModel() {
-
-    }
-    
-    private func stopActivityIndicator() {
-        listScreen.activityIndicator.stopAnimating()
-        listScreen.activityIndicator.isHidden = true
+    private func updateView() {
+        DispatchQueue.main.async {
+            self.listScreen.table.reloadData()
+            self.listScreen.activityIndicator.stopAnimating()
+            self.listScreen.activityIndicator.isHidden = true
+        }
     }
 }
 
@@ -112,8 +117,7 @@ extension ListScreenVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-#warning("указать колличество ячеек")
-        return 10
+        coinArray.count
     }
     
     
@@ -121,7 +125,7 @@ extension ListScreenVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell
         guard let cell = cell else { return UITableViewCell() }
         
-        cell.pullCell()
+        cell.pullCell(coin: coinArray[indexPath.row])
         
         return cell
     }

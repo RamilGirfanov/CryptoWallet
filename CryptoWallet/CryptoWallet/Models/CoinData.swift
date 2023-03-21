@@ -17,6 +17,8 @@ struct Data {
     let market_data: MarketData
     
     enum CodingKeys: String, CodingKey {
+        case symbol
+        case name
         case marketData = "market_data"
     }
 }

@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         ScreenBuilder.shared.setupLoginData()
         
-        let keyForEnterStatus = UDEnterKeys.enterStatus.rawValue
-        let enterStatus = UserDefaults.standard.bool(forKey: keyForEnterStatus)
+        let account = Account()
+        let enterStatus = account.enteredStatus
         
         switch enterStatus {
         case true:

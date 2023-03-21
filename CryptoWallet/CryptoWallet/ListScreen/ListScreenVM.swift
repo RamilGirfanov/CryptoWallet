@@ -9,7 +9,7 @@ import Foundation
 
 final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     
-    private let accountManager = Account()
+    private var account = Account()
     
     private var network = Network()
     
@@ -60,7 +60,7 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
 //            let task = session.dataTask(with: url) { data, response, error in
 //                if let data {
 //                    #warning("передать данные в VC")
-////                    self?.dataArray.append(data)
+//                    self?.dataArray.append(data)
 //                }
 //            }
 //            task.resume()
@@ -74,10 +74,8 @@ extension ListScreenVM: LoginVMProtocol {
     func enter(login: String, pass: String) {}
 
     func out() {
-        let enterStatus = false
-        let key = UDEnterKeys.enterStatus.rawValue
-        UserDefaults.standard.set(enterStatus, forKey: key)
-        
+        account.enteredStatus = false
+                
         RootVCManager.shared.changeRootVC(VCType: .loginScreen)
     }
 }

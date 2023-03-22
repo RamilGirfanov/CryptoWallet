@@ -19,20 +19,15 @@ struct Network {
                     "cardano",
                     "xrp"]
     
-    var coin: String = ""
+    var coin = ""
     
     var urlString: String {
         "https://data.messari.io/api/v1/assets/\(coin)/metrics"
     }
     
-    var coinID: String {
-        get {
-            ""
-        }
-        set {
-            urlStringForImage = "https://asset-images.messari.io/images/\(newValue)/64.png?v=2)"
-        }
-    }
+    var coinID = ""
     
-    var urlStringForImage: String?
+    var urlStringForImage: String {
+        "https://asset-images.messari.io/images/\(coinID)/64.png?v=2)"
+    }
 }

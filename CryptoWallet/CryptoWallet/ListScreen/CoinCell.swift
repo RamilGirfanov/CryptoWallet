@@ -111,13 +111,14 @@ final class CoinCell: UITableViewCell {
     // MARK: - Заполнение ячеек данными
     #warning("Изменить")
     func pullCell(coin: Coin) {
-        let fakeCoin = FakeCoin()
         
-        coinImage.image = fakeCoin.image
+        if let imageData = coin.imageData {
+            coinImage.image = UIImage(data: imageData)
+        }
         
         symbolLabel.text = coin.symbol
-        priceLabel.text = "$\(coin.priceUsdString)"
-        change1hPriceLabel.text = "Изменение цены за 1ч: " + coin.changeUsdLast1HourString
-        change24hPriceLabel.text = "Изменение цены за 24ч: " + coin.changeUsdLast24HoursString
+        priceLabel.text = coin.priceUsdString
+        change1hPriceLabel.text = coin.changeUsdLast1HourString
+        change24hPriceLabel.text = coin.changeUsdLast24HoursString
     }
 }

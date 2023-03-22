@@ -8,25 +8,27 @@
 import Foundation
 
 struct CoinData: Decodable {
-    let data: DataModel
+    let data: DataModel?
 }
 
 struct DataModel: Decodable {
-    let symbol: String
-    let name: String
-    let marketData: MarketData
+    let id: String?
+    let name: String?
+    let symbol: String?
+    let marketData: MarketData?
     
     enum CodingKeys: String, CodingKey {
-        case symbol
+        case id
         case name
+        case symbol
         case marketData = "market_data"
     }
 }
 
 struct MarketData: Decodable {
-    let priceUsd: Double
-    let percentChangeUsdLast1Hour: Double
-    let percentChangeUsdLast24Hours: Double
+    let priceUsd: Double?
+    let percentChangeUsdLast1Hour: Double?
+    let percentChangeUsdLast24Hours: Double?
     
     enum CodingKeys: String, CodingKey {
         case priceUsd = "price_usd"

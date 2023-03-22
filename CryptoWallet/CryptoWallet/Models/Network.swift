@@ -19,10 +19,20 @@ struct Network {
                     "cardano",
                     "xrp"]
     
-    #warning("Убрать")
-    var coin: String = "btc"
+    var coin: String = ""
     
     var urlString: String {
         "https://data.messari.io/api/v1/assets/\(coin)/metrics"
     }
+    
+    var coinID: String {
+        get {
+            ""
+        }
+        set {
+            urlStringForImage = "https://asset-images.messari.io/images/\(newValue)/64.png?v=2)"
+        }
+    }
+    
+    var urlStringForImage: String?
 }

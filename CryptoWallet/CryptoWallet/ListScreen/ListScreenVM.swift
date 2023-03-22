@@ -61,7 +61,6 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
         
         guard let url = URL(string: urlString) else { return }
         guard let imageData = try? Data(contentsOf: url) else { return }
-        print(imageData)
         completionHandler(imageData)
         /*
         URLSession.shared.dataTask(with: url) {data, response, error in

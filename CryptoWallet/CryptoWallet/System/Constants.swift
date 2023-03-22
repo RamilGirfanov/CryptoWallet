@@ -14,8 +14,20 @@ extension UIView {
     }
 }
 
-enum UDEnterKeys: String {
-    case login
-    case password
-    case enterStatus
+// Расширение для блюра
+extension UIImageView {
+    func applyBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurEffectView)
+    }
 }
+
+
+let commonCornerRadius: CGFloat = 10
+
+let commonColor: UIColor = .systemBlue
+
+let commonHeighTapObjects: CGFloat = 44

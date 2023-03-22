@@ -8,9 +8,8 @@
 import UIKit
 
 class MyNavigationController: UINavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.backgroundColor = .systemBackground
+        navigationBar.backgroundColor = .clear
     }
 }

@@ -16,14 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let keyForEnterStatus = UDEnterKeys.enterStatus.rawValue
-        let enterStatus = UserDefaults.standard.bool(forKey: keyForEnterStatus)
+        ScreenBuilder.shared.setupLoginData()
+        
+        let account = Account()
+        let enterStatus = account.enteredStatus
         
         switch enterStatus {
         case true:
-            window.rootViewController = ScreenBuilder.buildScreen(VCType: .listScreen)
+            window.rootViewController = ScreenBuilder.shared.buildScreen(VCType: .listScreen)
         case false:
-            window.rootViewController = ScreenBuilder.buildScreen(VCType: .loginScreen)
+            window.rootViewController = ScreenBuilder.shared.buildScreen(VCType: .loginScreen)
         }
         
         window.makeKeyAndVisible()

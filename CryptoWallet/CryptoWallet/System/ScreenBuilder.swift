@@ -12,24 +12,47 @@ enum VCType {
     case listScreen
 }
 
+enum Models {
+    static let account = Account()
+    static let network = Network()
+}
+
 final class ScreenBuilder {
-    static func buildScreen(VCType: VCType) -> UINavigationController {
+    static let shared = ScreenBuilder()
+    private init() {}
+    
+    // Функция для предустановки логина и пароля
+    #warning("Сделать экран регистрации")
+    func setupLoginData() {
+        let login = "1234"
+        let loginKey = UDEnterKeys.login
+        UserDefaults.standard.set(login, forKey: loginKey)
         
+        let pass = "1234"
+        let passKey = UDEnterKeys.password
+        UserDefaults.standard.set(pass, forKey: passKey)
+    }
+    
+    func buildScreen(VCType: VCType) -> UINavigationController {
         switch VCType {
         case .loginScreen:
-            let screen = LoginScreenVC()
+            let viewModel = LoginScreenVM(account: Models.account)
+            let screen = LoginScreenVC(viewModel: viewModel)
             return MyNavigationController(rootViewController: screen)
         case .listScreen:
-            let screen = ListScreenVC()
-            let VM = ListScreenVM()
-            screen.viewModel = VM
+            let viewModel = ListScreenVM()
+            let screen = ListScreenVC(viewModel: viewModel)
             return MyNavigationController(rootViewController: screen)
         }
     }
 }
 
+
 final class RootVCManager {
-    static func changeRootVC(VCType: VCType) {
+    static let shared = RootVCManager()
+    private init() {}
+    
+    func changeRootVC(VCType: VCType) {
         
         var sceneDelegate: SceneDelegate? {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -39,9 +62,9 @@ final class RootVCManager {
         
         switch VCType {
         case .loginScreen:
-            sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: .loginScreen)
+            sceneDelegate?.window?.rootViewController = ScreenBuilder.shared.buildScreen(VCType: .loginScreen)
         case .listScreen:
-            sceneDelegate?.window?.rootViewController = ScreenBuilder.buildScreen(VCType: .listScreen)
+            sceneDelegate?.window?.rootViewController = ScreenBuilder.shared.buildScreen(VCType: .listScreen)
         }
     }
 }

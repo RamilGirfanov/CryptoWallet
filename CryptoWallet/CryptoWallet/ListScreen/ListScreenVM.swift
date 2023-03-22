@@ -44,11 +44,9 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
             guard var coin = self.parseJSON(data: data) else { return }
                         
             self.network.coinID = coin.id
+            let urlStringForImage = self.network.urlStringForImage
             
-            guard let urlString = self.network.urlStringForImage else { return }
-            guard let url = URL(string: urlString) else { return }
-            
-            self.getImage(fromeURL: url) { data in
+            self.getImage(fromeURLString: urlStringForImage) { data in
                 coin.imageData = data
             }
             
@@ -58,11 +56,18 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     }
     
     // Функция получения изображения для монеты
-    private func getImage(fromeURL url: URL, completionHandler: @escaping (Data) -> Void) {
+    private func getImage(fromeURLString urlString: String,
+                          completionHandler: @escaping (Data) -> Void) {
+        
+        guard let url = URL(string: urlString) else { return }
+        guard let imageData = try? Data(contentsOf: url) else { return }
+        completionHandler(imageData)
+        /*
         URLSession.shared.dataTask(with: url) {data, response, error in
             guard let data = data else { return }
             completionHandler(data)
         }.resume()
+         */
     }
     
     // Функция пасинга JSON данных
@@ -92,19 +97,6 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
             getCoin(fromeURL: url)
         }
         
-        /*
-        guard let url = URL(string: network.urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else { return }
-            if let data = data {
-                if let coin = self.parseJSON(data: data) {
-                    self.coinArray.append(coin)
-                    self.updateView(self.coinArray)
-                }
-            }
-        }.resume()
-         */
         #warning("решить через многопоточность")
 //        updateView(coinArray)
     }

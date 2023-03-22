@@ -151,7 +151,6 @@
 				74E8E9DA29C0CE0F00F10E34 /* Network.swift */,
 				7449913629C39DFC00906553 /* CoinData.swift */,
 				74522EF329C9AE53003BC12C /* Coin.swift */,
-				74522EF029C74301003BC12C /* Danya */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +177,7 @@
 		7477FE1929BB46CE008192D3 /* Trash */ = {
 			isa = PBXGroup;
 			children = (
+				74522EF029C74301003BC12C /* Danya */,
 				7417F8C229B52F6C007D92C4 /* LoginScreen.swift */,
 				744E51AC29BA17A300BB14E9 /* ListScreen.swift */,
 				74522EE429C4ADBC003BC12C /* FakeCoin.swift */,

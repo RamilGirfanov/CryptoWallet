@@ -29,6 +29,7 @@
 		74522EEF29C72E91003BC12C /* CryptoCoiun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EEE29C72E91003BC12C /* CryptoCoiun.swift */; };
 		74522EF229C75956003BC12C /* ListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF129C75956003BC12C /* ListScreenView.swift */; };
 		74522EF429C9AE53003BC12C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF329C9AE53003BC12C /* Coin.swift */; };
+		74522EF729CB8C03003BC12C /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF629CB8C03003BC12C /* Sorting.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
@@ -61,6 +62,7 @@
 		74522EEE29C72E91003BC12C /* CryptoCoiun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoiun.swift; sourceTree = "<group>"; };
 		74522EF129C75956003BC12C /* ListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreenView.swift; sourceTree = "<group>"; };
 		74522EF329C9AE53003BC12C /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		74522EF629CB8C03003BC12C /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				744E51AF29BA1DF000BB14E9 /* Models */,
 				7417F8C129B52F34007D92C4 /* LoginScreen */,
 				741029F229B557220078E88D /* ListScreen */,
+				74522EF529CB8BAE003BC12C /* SortScreen */,
 				74E8E9D629BB7CF200F10E34 /* DescriptionScreen */,
 				7417F8BB29B4C0B4007D92C4 /* Info.plist */,
 				7477FE1929BB46CE008192D3 /* Trash */,
@@ -151,6 +154,7 @@
 				74E8E9DA29C0CE0F00F10E34 /* Network.swift */,
 				7449913629C39DFC00906553 /* CoinData.swift */,
 				74522EF329C9AE53003BC12C /* Coin.swift */,
+				74522EF629CB8C03003BC12C /* Sorting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,6 +176,13 @@
 				74522EEC29C72E46003BC12C /* NetworkConstants.swift */,
 			);
 			path = Danya;
+			sourceTree = "<group>";
+		};
+		74522EF529CB8BAE003BC12C /* SortScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SortScreen;
 			sourceTree = "<group>";
 		};
 		7477FE1929BB46CE008192D3 /* Trash */ = {
@@ -276,6 +287,7 @@
 				74E8E9DD29C0D66C00F10E34 /* ListScreenVM.swift in Sources */,
 				74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */,
 				74522EEF29C72E91003BC12C /* CryptoCoiun.swift in Sources */,
+				74522EF729CB8C03003BC12C /* Sorting.swift in Sources */,
 				7417F8B229B4C0B3007D92C4 /* LoginScreenVC.swift in Sources */,
 				74522EEB29C72E1C003BC12C /* NetworkManagerDanya.swift in Sources */,
 				74522EF229C75956003BC12C /* ListScreenView.swift in Sources */,

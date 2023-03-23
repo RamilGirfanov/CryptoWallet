@@ -30,6 +30,9 @@
 		74522EF229C75956003BC12C /* ListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF129C75956003BC12C /* ListScreenView.swift */; };
 		74522EF429C9AE53003BC12C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF329C9AE53003BC12C /* Coin.swift */; };
 		74522EF729CB8C03003BC12C /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF629CB8C03003BC12C /* Sorting.swift */; };
+		7474591D29CCF6F200CD6748 /* SortScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474591C29CCF6F200CD6748 /* SortScreenVC.swift */; };
+		7474591F29CCF8BF00CD6748 /* SortScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474591E29CCF8BF00CD6748 /* SortScreenView.swift */; };
+		7474592129CCF94200CD6748 /* SortScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592029CCF94200CD6748 /* SortScreenVM.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
@@ -63,6 +66,9 @@
 		74522EF129C75956003BC12C /* ListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreenView.swift; sourceTree = "<group>"; };
 		74522EF329C9AE53003BC12C /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		74522EF629CB8C03003BC12C /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
+		7474591C29CCF6F200CD6748 /* SortScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortScreenVC.swift; sourceTree = "<group>"; };
+		7474591E29CCF8BF00CD6748 /* SortScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortScreenView.swift; sourceTree = "<group>"; };
+		7474592029CCF94200CD6748 /* SortScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortScreenVM.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -181,6 +187,9 @@
 		74522EF529CB8BAE003BC12C /* SortScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7474591C29CCF6F200CD6748 /* SortScreenVC.swift */,
+				7474592029CCF94200CD6748 /* SortScreenVM.swift */,
+				7474591E29CCF8BF00CD6748 /* SortScreenView.swift */,
 			);
 			path = SortScreen;
 			sourceTree = "<group>";
@@ -301,9 +310,12 @@
 				7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */,
 				7449913B29C4914F00906553 /* LoginVMProtocol.swift in Sources */,
 				7449913729C39DFC00906553 /* CoinData.swift in Sources */,
+				7474591F29CCF8BF00CD6748 /* SortScreenView.swift in Sources */,
 				7417F8AE29B4C0B3007D92C4 /* AppDelegate.swift in Sources */,
 				7417F8B029B4C0B3007D92C4 /* SceneDelegate.swift in Sources */,
+				7474591D29CCF6F200CD6748 /* SortScreenVC.swift in Sources */,
 				7449913D29C4928D00906553 /* LoginScreenVM.swift in Sources */,
+				7474592129CCF94200CD6748 /* SortScreenVM.swift in Sources */,
 				74E8E9E029C0DADE00F10E34 /* ListVMProtocol.swift in Sources */,
 				74522EE529C4ADBC003BC12C /* FakeCoin.swift in Sources */,
 				744E51AB29BA103300BB14E9 /* Constants.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DescriptionScreenVC: UIViewController {
+final class DescriptionScreenVC: UIViewController {
 
     // MARK: - Lifecycle
     

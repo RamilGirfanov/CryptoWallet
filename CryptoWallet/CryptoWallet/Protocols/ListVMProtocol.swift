@@ -7,11 +7,8 @@
 
 import Foundation
 
-protocol ListVMProtocolIn {
+protocol ListVMProtocol {
     func getData()
-}
-
-protocol ListVMProtocolOut {
     var updateView: ([Coin]) -> Void { get set }
-//    var updateView: (([Coin]) -> Void)? { get set }
+    func sortCoins(sortType: Sorting.SortingTypes)
 }

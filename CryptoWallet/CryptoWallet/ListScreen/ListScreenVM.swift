@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
+final class ListScreenVM: ListVMProtocol {
     
     // MARK: - Models
     
@@ -85,7 +85,7 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
     }
     
     
-    // MARK: - VMProcols
+    // MARK: - VMProcol
     
     var updateView: ([Coin]) -> Void = { _ in }
     
@@ -101,6 +101,14 @@ final class ListScreenVM: ListVMProtocolIn, ListVMProtocolOut {
 //        updateView(coinArray)
     }
     
+    func sortCoins(sortType: Sorting.SortingTypes) {
+//        switch sortType {
+//        case .by24Hours:
+//            coinArray.sorted(by: $0.percentChangeUsdLast24Hours > $1.percentChangeUsdLast24Hours)
+//        case .by1Hour:
+//            <#code#>
+//        }
+    }
 }
 
 extension ListScreenVM: LoginVMProtocol {

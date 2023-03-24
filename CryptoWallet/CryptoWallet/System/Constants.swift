@@ -25,6 +25,13 @@ extension UIImageView {
     }
 }
 
+// Расширение для popOver
+extension UIViewController: UIPopoverPresentationControllerDelegate {
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        .none
+    }
+}
+
 
 let commonCornerRadius: CGFloat = 10
 

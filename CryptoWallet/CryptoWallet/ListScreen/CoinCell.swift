@@ -8,6 +8,7 @@
 import UIKit
 
 final class CoinCell: UITableViewCell {
+    
     // MARK: - init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -10,13 +10,15 @@ import UIKit
 final class ListScreenVC: UIViewController {
     
     // MARK: - ViewModel
-    private var viewModel: (ListVMProtocolIn & ListVMProtocolOut & LoginVMProtocol)?
+    
+    private var viewModel: (ListVMProtocol & LoginVMProtocol)?
     
 //    Массив для обновления tableView
     private var coinArray: [Coin] = []
     
     
     // MARK: - View
+    
     private lazy var listScreen: ListScreen = {
         let listScreen = ListScreen()
         listScreen.table.dataSource = self
@@ -26,7 +28,8 @@ final class ListScreenVC: UIViewController {
     
     
     // MARK: - init
-    init(viewModel: (ListVMProtocolIn & ListVMProtocolOut & LoginVMProtocol)) {
+    
+    init(viewModel: (ListVMProtocol & LoginVMProtocol)) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
      }
@@ -37,6 +40,7 @@ final class ListScreenVC: UIViewController {
     
     
     // MARK: - Lifecycle
+    
     override func loadView() {
         view = listScreen
     }
@@ -44,7 +48,6 @@ final class ListScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
-        addTargets()
         
         viewModel?.getData()
         viewModel?.updateView = { [weak self] coinArray in
@@ -74,20 +77,6 @@ final class ListScreenVC: UIViewController {
         
         navigationItem.leftBarButtonItem = barButtonLogOut
     }
-    
-    private func addTargets() {
-        listScreen.firstSortButton.addTarget(self,
-                                             action: #selector(firstSort),
-                                             for: .touchUpInside)
-        
-        listScreen.secondSortButton.addTarget(self,
-                                              action: #selector(secondSort),
-                                              for: .touchUpInside)
-        
-        listScreen.canselButton.addTarget(self,
-                                          action: #selector(cansel),
-                                          for: .touchUpInside)
-    }
 }
 
 
@@ -105,6 +94,38 @@ extension ListScreenVC {
             self.listScreen.activityIndicator.stopAnimating()
             self.listScreen.activityIndicator.isHidden = true
         }
+    }
+
+    @objc
+    private func sortList() {
+        let sortingScreenVM = SortingScreenVM()
+        sortingScreenVM.passSortingType = { [weak self] type in
+            guard let self = self else { return }
+            self.viewModel?.sortCoins(sortType: type)
+        }
+        
+        let sortingScreenVC = SortingScreenVC(viewModel: sortingScreenVM)
+        
+        sortingScreenVC.modalPresentationStyle = .popover
+        
+        let height = Sorting.SortingTypes.allCases.count * Int(commonHeighTapObjects)
+        sortingScreenVC.preferredContentSize = CGSize(width: 300, height: height)
+        
+        guard let presentationVC = sortingScreenVC.popoverPresentationController else { return }
+        presentationVC.delegate = self
+        presentationVC.sourceView = listScreen.table
+        presentationVC.permittedArrowDirections = .up
+        presentationVC.sourceRect = CGRect(x: listScreen.table.bounds.maxX,
+                                           y: listScreen.table.bounds.minY,
+                                           width: 0,
+                                           height: 0)
+        
+        present(sortingScreenVC, animated: true)
+    }
+    
+    @objc
+    private func logOut() {
+        viewModel?.out()
     }
 }
 
@@ -141,38 +162,5 @@ extension ListScreenVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCoin(index: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-
-
-
-
-// MARK: - @objc методы
-
-extension ListScreenVC {
-    @objc
-    private func sortList() {
-        listScreen.subViewForSort.isHidden = false
-    }
-    
-    @objc
-    private func firstSort() {
-        
-    }
-    
-    @objc
-    private func secondSort() {
-        
-    }
-    
-    @objc
-    private func cansel() {
-        listScreen.subViewForSort.isHidden = true
-    }
-    
-    @objc
-    private func logOut() {
-        viewModel?.out()
     }
 }

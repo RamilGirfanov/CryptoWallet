@@ -11,9 +11,9 @@ struct Coin {
     let id: String
     let name: String
     let symbol: String
-    private let priceUsd: Double?
-    private let percentChangeUsdLast1Hour: Double?
-    private let percentChangeUsdLast24Hours: Double?
+    let priceUsd: Double?
+    let percentChangeUsdLast1Hour: Double?
+    let percentChangeUsdLast24Hours: Double?
     
     var imageData: Data?
         

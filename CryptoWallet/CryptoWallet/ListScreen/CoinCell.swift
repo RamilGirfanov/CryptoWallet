@@ -51,7 +51,6 @@ final class CoinCell: UITableViewCell {
 
     private let symbolLabel: UILabel = {
         let label = UILabel()
-        label.text = "Название"
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 30, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +59,6 @@ final class CoinCell: UITableViewCell {
     
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Цена"
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +67,6 @@ final class CoinCell: UITableViewCell {
     
     private let change1hPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = "За 1ч: "
         label.font = .systemFont(ofSize: 15)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +75,6 @@ final class CoinCell: UITableViewCell {
     
     private let change24hPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = "За 24ч: "
         label.font = .systemFont(ofSize: 15)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -102,12 +102,18 @@ final class ListScreenVM: ListVMProtocol {
     }
     
     func sortCoins(sortType: Sorting.SortingTypes) {
-//        switch sortType {
-//        case .by24Hours:
-//            coinArray.sorted(by: $0.percentChangeUsdLast24Hours > $1.percentChangeUsdLast24Hours)
-//        case .by1Hour:
-//            <#code#>
-//        }
+        switch sortType {
+        case .by24Hours:
+            coinArray.sort {
+                $0.ohlcvLast24Hour ?? 0 > $1.ohlcvLast24Hour ?? 0
+            }
+                        
+        case .by1Hour:
+            coinArray.sort {
+                $0.ohlcvLast1Hour ?? 0 > $1.ohlcvLast1Hour ?? 0
+            }
+        }
+        updateView(coinArray)
     }
 }
 

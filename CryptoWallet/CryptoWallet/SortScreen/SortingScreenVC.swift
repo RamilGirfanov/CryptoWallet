@@ -41,11 +41,6 @@ final class SortingScreenVC: UIViewController {
     override func loadView() {
         view = sortScreen
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(sortScreen.table.rowHeight)
-    }
 }
 
 

@@ -10,8 +10,10 @@ import Foundation
 struct Sorting {
     
     enum SortingTypes: String, CaseIterable {
-        case by24Hours = "По изменению цены за 24 часа"
-        case by1Hour = "По изменению цены за 1 час"
+        case by24HoursHiToLo = "Дельта цены за 24 часа по убыванию"
+        case by24HoursLoToHi = "Дельта цены за 24 часа по возрастанию"
+        case by1HourHiToLo = "Дельта цены цены за 1 час по убыванию"
+        case by1HourLoToHi = "Дельта цены цены за 1 час по возрастанию"
     }
     
     var allTypesOfSorting: [SortingTypes] {

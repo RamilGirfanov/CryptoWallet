@@ -85,6 +85,7 @@ extension SortingScreenVC: UITableViewDelegate {
         if let types = viewModel?.getSortingTypes() {
             let type = types[indexPath.row]
             viewModel?.passSortingType(type)
+            dismiss(animated: true)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

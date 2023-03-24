@@ -109,7 +109,7 @@ extension ListScreenVC {
         sortingScreenVC.modalPresentationStyle = .popover
         
         let height = Sorting.SortingTypes.allCases.count * Int(commonHeighTapObjects)
-        sortingScreenVC.preferredContentSize = CGSize(width: 300, height: height)
+        sortingScreenVC.preferredContentSize = CGSize(width: 400, height: height)
         
         guard let presentationVC = sortingScreenVC.popoverPresentationController else { return }
         presentationVC.delegate = self

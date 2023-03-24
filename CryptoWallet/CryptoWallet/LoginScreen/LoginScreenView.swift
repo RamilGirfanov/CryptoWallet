@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginScreenView: UIView {
+final class LoginScreenView: UIView {
     
     // MARK: - init
     override init(frame: CGRect) {

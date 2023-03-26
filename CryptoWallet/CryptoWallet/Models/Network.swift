@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Network {
+class Network {
     let coinList = ["btc",
                     "eth",
                     "tron",
@@ -19,15 +19,90 @@ struct Network {
                     "cardano",
                     "xrp"]
     
-    var coin = ""
+    var coinString = ""
     
     var urlString: String {
-        "https://data.messari.io/api/v1/assets/\(coin)/metrics"
+        "https://data.messari.io/api/v1/assets/\(coinString)/metrics"
     }
     
     var coinID = ""
     
     var urlStringForImage: String {
         "https://asset-images.messari.io/images/\(coinID)/64.png?v=2)"
+    }
+    
+    
+    // MARK: - Методы получения монеты
+    
+    // Функция возвращающая массив URL
+    func getUrlArray() -> [URL] {
+        var urlArray: [URL] = []
+        
+        guard !coinList.isEmpty else {
+            return urlArray
+        }
+        
+        coinList.forEach {
+            coinString = $0
+            
+            guard let url = URL(string: urlString) else {
+                return
+            }
+            
+            urlArray.append(url)
+        }
+        return urlArray
+    }
+    
+    // Функция пасинга JSON данных
+    private func parseJSON(data: Data) -> Coin? {
+        let decoder = JSONDecoder()
+        
+        do {
+            let coinData = try decoder.decode(CoinData.self, from: data)
+            let coin = Coin(coinData: coinData)
+            return coin
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    // Функция получения изображения для монеты для монеты
+    private func getImage(fromeURLString urlString: String,
+                          completionHandler: @escaping (Data) -> Void) {
+        guard
+            let url = URL(string: urlString),
+            let imageData = try? Data(contentsOf: url)
+        else {
+            return
+        }
+        completionHandler(imageData)
+    }
+    
+    // Функция получения монеты из сети
+    func getCoin(fromeURL url: URL,
+                 completionHandler: @escaping (Coin) -> Void) {
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            guard
+                let data = data,
+                var coin = self.parseJSON(data: data)
+            else {
+                return
+            }
+            print("Получение данных из сети\(data)")
+            self.coinID = coin.id
+            
+            let urlStringForImage = self.urlStringForImage
+            
+            self.getImage(fromeURLString: urlStringForImage) { data in
+                coin.imageData = data
+                print("Получение картинки из сети\(data)")
+            }
+            
+            completionHandler(coin)
+        }.resume()
     }
 }

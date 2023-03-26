@@ -24,7 +24,7 @@ final class LoginScreenVM: LoginVMProtocol {
     }
     
     // Функция для проверки логина и пароля
-    func checkLoginData(login: String, pass: String) -> Bool {
+    private func checkLoginData(login: String, pass: String) -> Bool {
         // Проверка на корректность логина
         let keyForRightLogin = UDEnterKeys.login
         let rightLogin = UserDefaults.standard.string(forKey: keyForRightLogin)
@@ -42,14 +42,14 @@ final class LoginScreenVM: LoginVMProtocol {
     }
     
     // Функция для входа
-    func login() {
+    private func login() {
         account.enteredStatus = true
         
         RootVCManager.shared.changeRootVC(VCType: .listScreen)
     }
     
     // Функция для выхода
-    func logout() {
+    private func logout() {
         account.enteredStatus = false
 
         RootVCManager.shared.changeRootVC(VCType: .loginScreen)

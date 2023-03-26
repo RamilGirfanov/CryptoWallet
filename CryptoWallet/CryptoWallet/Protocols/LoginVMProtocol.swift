@@ -9,5 +9,6 @@ import Foundation
 
 protocol LoginVMProtocol {
     func enter(login: String, pass: String)
+    
     func out()
 }

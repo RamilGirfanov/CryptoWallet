@@ -9,6 +9,8 @@ import Foundation
 
 protocol ListVMProtocol {
     func getData()
+    
     var updateView: ([Coin]) -> Void { get set }
+    
     func sortCoins(sortType: Sorting.SortingTypes)
 }

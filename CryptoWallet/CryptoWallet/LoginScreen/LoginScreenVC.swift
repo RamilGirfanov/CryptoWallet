@@ -43,10 +43,9 @@ final class LoginScreenVC: UIViewController {
     }
 
     
-    
     // MARK: - Функционал
 
-    func addTargets() {
+    private func addTargets() {
         loginScreen.enterButton.addTarget(self,
                                           action: #selector(enter),
                                           for: .touchUpInside)

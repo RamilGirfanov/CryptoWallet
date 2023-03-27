@@ -5,7 +5,7 @@
 //  Created by Рамиль Гирфанов on 17.03.2023.
 //
 
-import Foundation
+import UIKit
 
 final class LoginScreenVM: LoginVMProtocol {
     
@@ -26,15 +26,13 @@ final class LoginScreenVM: LoginVMProtocol {
     // Функция для проверки логина и пароля
     private func checkLoginData(login: String, pass: String) -> Bool {
         // Проверка на корректность логина
-        let keyForRightLogin = UDEnterKeys.login
-        let rightLogin = UserDefaults.standard.string(forKey: keyForRightLogin)
+        let rightLogin = account.login
         guard let rightLogin = rightLogin,
               login == rightLogin
         else { return false }
         
         // Проверка на корректность пароля
-        let keyForRightPass = UDEnterKeys.password
-        let rightPass = UserDefaults.standard.string(forKey: keyForRightPass)
+        let rightPass = account.password
         guard let rightPass = rightPass,
               pass == rightPass
         else { return false }

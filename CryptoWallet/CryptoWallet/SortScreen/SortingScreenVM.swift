@@ -14,8 +14,6 @@ final class SortingScreenVM: SortingVMProtocol {
     private let sorting = Sorting()
     
     
-    // MARK: - VMProcol
-
     func getSortingTypes() -> [Sorting.SortingTypes] {        
         return sorting.allTypesOfSorting
     }

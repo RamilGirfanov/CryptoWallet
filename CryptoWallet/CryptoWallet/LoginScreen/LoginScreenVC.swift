@@ -16,7 +16,12 @@ final class LoginScreenVC: UIViewController {
     
     // MARK: - View
     
-    private let loginScreen = LoginScreenView()
+    private lazy var loginScreen: LoginScreenView = {
+        let loginScreen = LoginScreenView()
+        loginScreen.loginTextField.delegate = self
+        loginScreen.passTextField.delegate = self
+        return loginScreen
+    }()
     
     
     // MARK: - init
@@ -40,6 +45,7 @@ final class LoginScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addTargets()
+        setupToHideKeyboardOnTapOnView()
     }
 
     
@@ -71,5 +77,15 @@ final class LoginScreenVC: UIViewController {
         guard let pass = loginScreen.passTextField.text else { return }
         
         viewModel.enter(login: login, pass: pass)
+    }
+}
+
+
+//  MARK: - Расширение для клавиатуры что бы она скрывалась по нажанию на return
+
+extension LoginScreenVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }

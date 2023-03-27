@@ -13,7 +13,7 @@ final class ListScreenVC: UIViewController {
     
     private var viewModel: (ListVMProtocol & LoginVMProtocol)?
     
-//    Массив для обновления tableView
+    // Массив для обновления tableView
     private var coinArray: [Coin] = []
     
     
@@ -32,7 +32,7 @@ final class ListScreenVC: UIViewController {
     init(viewModel: (ListVMProtocol & LoginVMProtocol)) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-     }
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -83,10 +83,11 @@ final class ListScreenVC: UIViewController {
 // MARK: - Функционал
 
 extension ListScreenVC {
-        
+    
     private func showCoin(index: Int) {
         
     }
+    
     
     private func updateView() {
         DispatchQueue.main.async {
@@ -95,7 +96,8 @@ extension ListScreenVC {
             self.listScreen.activityIndicator.isHidden = true
         }
     }
-
+    
+    // Вызов экрана выбора сортировки
     @objc
     private func sortList() {
         let sortingScreenVM = SortingScreenVM()
@@ -140,7 +142,6 @@ extension ListScreenVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         coinArray.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell

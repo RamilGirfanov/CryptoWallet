@@ -21,18 +21,10 @@ final class ListScreenVM: ListVMProtocol {
     // MARK: - VMProcol
     
     func getData() {
-        let urlArray = network.getUrlArray()
-        
-        let group = DispatchGroup()
-        
-        urlArray.forEach { url in
-            group.enter()
-            network.getCoin(fromeURL: url) { [weak self] coin in
-                guard let self = self else { return }
-                self.coinArray.append(coin)
-                self.updateView(self.coinArray)
-            }
-            group.leave()
+        network.getCoins { [weak self] coin in
+            guard let self = self else { return }
+            self.coinArray.append(coin)
+            self.updateView(self.coinArray)
         }
     }
     

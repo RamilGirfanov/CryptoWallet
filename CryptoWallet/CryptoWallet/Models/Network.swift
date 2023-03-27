@@ -8,7 +8,7 @@
 import Foundation
 
 class Network {
-    let coinList = ["btc",
+    private let coinList = ["btc",
                     "eth",
                     "tron",
                     "luna",
@@ -19,15 +19,15 @@ class Network {
                     "cardano",
                     "xrp"]
     
-    var coinString = ""
+    private var coinString = ""
     
-    var urlString: String {
+    private var urlString: String {
         "https://data.messari.io/api/v1/assets/\(coinString)/metrics"
     }
     
-    var coinID = ""
+    private var coinID = ""
     
-    var urlStringForImage: String {
+    private var urlStringForImage: String {
         "https://asset-images.messari.io/images/\(coinID)/64.png?v=2)"
     }
     
@@ -35,7 +35,7 @@ class Network {
     // MARK: - Методы получения монеты
     
     // Функция возвращающая массив URL
-    func getUrlArray() -> [URL] {
+    private func getUrlArray() -> [URL] {
         var urlArray: [URL] = []
         
         guard !coinList.isEmpty else {
@@ -81,28 +81,40 @@ class Network {
     }
     
     // Функция получения монеты из сети
-    func getCoin(fromeURL url: URL,
-                 completionHandler: @escaping (Coin) -> Void) {
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else { return }
+    func getCoins(completionHandler: @escaping (Coin) -> Void) {
+        
+        
+        // Получаем массив ссылок на монеты
+        let urlArray = getUrlArray()
+        
+        // DispatchGroup для запроса в сеть
+        let group = DispatchGroup()
+        
+        urlArray.forEach { url in
+            group.enter()
             
-            guard
-                let data = data,
-                var coin = self.parseJSON(data: data)
-            else {
-                return
-            }
-            print("Получение данных из сети\(data)")
-            self.coinID = coin.id
+            URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+                guard let self = self else { return }
+                
+                guard
+                    let data = data,
+                    var coin = self.parseJSON(data: data)
+                else {
+                    return
+                }
+                
+                self.coinID = coin.id
+                
+                let urlStringForImage = self.urlStringForImage
+                
+                self.getImage(fromeURLString: urlStringForImage) { data in
+                    coin.imageData = data
+                }
+                
+                completionHandler(coin)
+            }.resume()
             
-            let urlStringForImage = self.urlStringForImage
-            
-            self.getImage(fromeURLString: urlStringForImage) { data in
-                coin.imageData = data
-                print("Получение картинки из сети\(data)")
-            }
-            
-            completionHandler(coin)
-        }.resume()
+            group.leave()
+        }
     }
 }

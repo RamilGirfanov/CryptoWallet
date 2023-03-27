@@ -20,6 +20,7 @@ final class DescriptionScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     // MARK: - UIObjects
     
     var image: UIImageView = {
@@ -102,53 +103,52 @@ final class DescriptionScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-        
-    private let firstStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.distribution = .fill
-        stack.spacing = 16
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private let secondStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-
-    private let thirdStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
     
     
     // MARK: - Layout
     
     private func layout() {
-        addSubview(firstStack)
+        [image, nameLabel, symbolLabel, priceLabel, change1HourText, changePriceLast1Hour, changePercentLast1Hour, change24HourText, changePriceLast24Hour, changePercentLast24Hour].forEach { addSubview($0)}
         
-        [image, nameLabel, symbolLabel, priceLabel, change1HourText, secondStack, change24HourText, thirdStack].forEach { firstStack.addArrangedSubview($0)}
-        
-        [changePriceLast1Hour, changePercentLast1Hour].forEach { secondStack.addArrangedSubview($0)}
-        
-        [changePriceLast24Hour, changePercentLast24Hour].forEach { thirdStack.addArrangedSubview($0)}
-                
-        let safeIndent: CGFloat = 16
+        let safeIndent1: CGFloat = 16
+        let safeIndent2: CGFloat = 8
         
         NSLayoutConstraint.activate([
             image.heightAnchor.constraint(equalToConstant: 200),
             image.widthAnchor.constraint(equalToConstant: 200),
+            image.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: safeIndent1),
+            image.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
-            firstStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: safeIndent),
-            firstStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
-            firstStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
+            nameLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: safeIndent1),
+            nameLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            symbolLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: safeIndent2),
+            symbolLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            priceLabel.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor, constant: safeIndent1),
+            priceLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            change1HourText.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: safeIndent1),
+            change1HourText.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            changePriceLast1Hour.topAnchor.constraint(equalTo: change1HourText.bottomAnchor, constant: safeIndent2),
+            changePriceLast1Hour.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            
+            changePercentLast1Hour.topAnchor.constraint(equalTo: change1HourText.bottomAnchor, constant: safeIndent2),
+            changePercentLast1Hour.leadingAnchor.constraint(equalTo: changePriceLast1Hour.trailingAnchor),
+            changePercentLast1Hour.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            changePercentLast1Hour.widthAnchor.constraint(equalTo: changePriceLast1Hour.widthAnchor),
+            
+            change24HourText.topAnchor.constraint(equalTo: changePercentLast1Hour.bottomAnchor, constant: safeIndent1),
+            change24HourText.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            changePriceLast24Hour.topAnchor.constraint(equalTo: change24HourText.bottomAnchor, constant: safeIndent2),
+            changePriceLast24Hour.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            
+            changePercentLast24Hour.topAnchor.constraint(equalTo: change24HourText.bottomAnchor, constant: safeIndent2),
+            changePercentLast24Hour.leadingAnchor.constraint(equalTo: changePriceLast24Hour.trailingAnchor),
+            changePercentLast24Hour.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            changePercentLast24Hour.widthAnchor.constraint(equalTo: changePriceLast24Hour.widthAnchor)
         ])
     }
 }

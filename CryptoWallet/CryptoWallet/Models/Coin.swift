@@ -34,7 +34,7 @@ struct Coin {
     }
     
     var priceUsdString: String {
-        if let priceUsd {
+        if let priceUsd = priceUsd {
             return "$\(String(format: "%.2f", priceUsd))"
         } else {
             return "Данных нет"
@@ -42,7 +42,7 @@ struct Coin {
     }
     
     var percentChangeUsdLast1HourString: String {
-        if let percentChangeUsdLast1Hour {
+        if let percentChangeUsdLast1Hour = percentChangeUsdLast1Hour {
             return "(\(String(format: "%.2f", percentChangeUsdLast1Hour))%)"
         } else {
             return "Данных нет"
@@ -50,7 +50,7 @@ struct Coin {
     }
     
     var percentChangeUsdLast24HoursString: String {
-        if let percentChangeUsdLast24Hours {
+        if let percentChangeUsdLast24Hours = percentChangeUsdLast24Hours {
             return "(\(String(format: "%.2f", percentChangeUsdLast24Hours))%)"
         } else {
             return "Данных нет"
@@ -58,7 +58,9 @@ struct Coin {
     }
     
     var changeUsdLast1HourString: String {
-        if let ohlcvLast1Hour, let priceUsd {
+        if let ohlcvLast1Hour = ohlcvLast1Hour,
+           let priceUsd = priceUsd
+        {
             let changeUsdLast1Hour = (ohlcvLast1Hour - priceUsd)
             return "Изменение цены за 1ч: $\(String(format: "%.2f", changeUsdLast1Hour))"
         } else {
@@ -67,7 +69,9 @@ struct Coin {
     }
 
     var changeUsdLast24HoursString: String {
-        if let ohlcvLast24Hour, let priceUsd {
+        if let ohlcvLast24Hour = ohlcvLast24Hour,
+           let priceUsd = priceUsd
+        {
             let changeUsdLast24Hours = (ohlcvLast24Hour - priceUsd)
             return "Изменение цены за 24ч: $\(String(format: "%.2f", changeUsdLast24Hours))"
         } else {

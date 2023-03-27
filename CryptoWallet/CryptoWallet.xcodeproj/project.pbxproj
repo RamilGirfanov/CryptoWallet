@@ -37,6 +37,9 @@
 		7474592529CDE75200CD6748 /* SortingVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592429CDE75200CD6748 /* SortingVMProtocol.swift */; };
 		7474592729CED57B00CD6748 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592629CED57B00CD6748 /* GlobalExtensions.swift */; };
 		7474592929D1B71E00CD6748 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592829D1B71E00CD6748 /* NetworkProtocol.swift */; };
+		7474592B29D1BA7100CD6748 /* DescriptionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592A29D1BA7100CD6748 /* DescriptionScreenView.swift */; };
+		7474592D29D1D71F00CD6748 /* DescriptionScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592C29D1D71F00CD6748 /* DescriptionScreenVM.swift */; };
+		7474592F29D1D77000CD6748 /* DescriptionVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592E29D1D77000CD6748 /* DescriptionVMProtocol.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
@@ -77,6 +80,9 @@
 		7474592429CDE75200CD6748 /* SortingVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingVMProtocol.swift; sourceTree = "<group>"; };
 		7474592629CED57B00CD6748 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		7474592829D1B71E00CD6748 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		7474592A29D1BA7100CD6748 /* DescriptionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenView.swift; sourceTree = "<group>"; };
+		7474592C29D1D71F00CD6748 /* DescriptionScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVM.swift; sourceTree = "<group>"; };
+		7474592E29D1D77000CD6748 /* DescriptionVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVMProtocol.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -218,7 +224,9 @@
 		74E8E9D629BB7CF200F10E34 /* DescriptionScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7474592C29D1D71F00CD6748 /* DescriptionScreenVM.swift */,
 				74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */,
+				7474592A29D1BA7100CD6748 /* DescriptionScreenView.swift */,
 			);
 			path = DescriptionScreen;
 			sourceTree = "<group>";
@@ -226,10 +234,11 @@
 		74E8E9DE29C0DAAF00F10E34 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7474592829D1B71E00CD6748 /* NetworkProtocol.swift */,
 				7449913A29C4914F00906553 /* LoginVMProtocol.swift */,
 				74E8E9DF29C0DADE00F10E34 /* ListVMProtocol.swift */,
-				7474592829D1B71E00CD6748 /* NetworkProtocol.swift */,
 				7474592429CDE75200CD6748 /* SortingVMProtocol.swift */,
+				7474592E29D1D77000CD6748 /* DescriptionVMProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -308,8 +317,10 @@
 				74E8E9DD29C0D66C00F10E34 /* ListScreenVM.swift in Sources */,
 				74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */,
 				74522EEF29C72E91003BC12C /* CryptoCoiun.swift in Sources */,
+				7474592D29D1D71F00CD6748 /* DescriptionScreenVM.swift in Sources */,
 				74522EF729CB8C03003BC12C /* Sorting.swift in Sources */,
 				7417F8B229B4C0B3007D92C4 /* LoginScreenVC.swift in Sources */,
+				7474592F29D1D77000CD6748 /* DescriptionVMProtocol.swift in Sources */,
 				74522EEB29C72E1C003BC12C /* NetworkManagerDanya.swift in Sources */,
 				74522EF229C75956003BC12C /* ListScreenView.swift in Sources */,
 				7474592929D1B71E00CD6748 /* NetworkProtocol.swift in Sources */,
@@ -323,6 +334,7 @@
 				74522EF429C9AE53003BC12C /* Coin.swift in Sources */,
 				7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */,
 				7449913B29C4914F00906553 /* LoginVMProtocol.swift in Sources */,
+				7474592B29D1BA7100CD6748 /* DescriptionScreenView.swift in Sources */,
 				7474592729CED57B00CD6748 /* GlobalExtensions.swift in Sources */,
 				7449913729C39DFC00906553 /* CoinData.swift in Sources */,
 				7474591F29CCF8BF00CD6748 /* SortingScreenView.swift in Sources */,

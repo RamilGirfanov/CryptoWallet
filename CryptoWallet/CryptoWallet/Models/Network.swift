@@ -103,12 +103,14 @@ class Network: NetworkProtocol {
                     return
                 }
                 
-                self.coinID = coin.id
-                
-                let urlStringForImage = self.urlStringForImage
-                
-                self.getImage(fromeURLString: urlStringForImage) { data in
-                    coin.imageData = data
+                if let coinID = coin.id {
+                    self.coinID = coinID
+                    
+                    let urlStringForImage = self.urlStringForImage
+                    
+                    self.getImage(fromeURLString: urlStringForImage) { data in
+                        coin.imageData = data
+                    }
                 }
                 
                 completionHandler(coin)

@@ -106,16 +106,30 @@ final class CoinCell: UITableViewCell {
     
     
     // MARK: - Заполнение ячеек данными
-    #warning("Изменить")
     func pullCell(coin: Coin) {
         
         if let imageData = coin.imageData {
             coinImage.image = UIImage(data: imageData)
         }
         
-        symbolLabel.text = coin.symbol
-        priceLabel.text = coin.priceUsdString
-        change1hPriceLabel.text = coin.changeUsdLast1HourString
-        change24hPriceLabel.text = coin.changeUsdLast24HoursString
+        symbolLabel.text = coin.symbol ?? "Данных нет"
+        
+        if let price = coin.priceString {
+            priceLabel.text = "$" + price
+        } else {
+            priceLabel.text = "Данных нет"
+        }
+        
+        if let changePriceLast1Hour = coin.changePriceLast1HourString {
+            change1hPriceLabel.text = "Дельта цены за 1 час: " + changePriceLast1Hour
+        } else {
+            change1hPriceLabel.text = "Данных нет"
+        }
+
+        if let changePriceLast24Hour = coin.changePriceLast24HourString {
+            change24hPriceLabel.text = "Дельта цены за 24 часа: " + changePriceLast24Hour
+        } else {
+            change24hPriceLabel.text = "Данных нет"
+        }
     }
 }

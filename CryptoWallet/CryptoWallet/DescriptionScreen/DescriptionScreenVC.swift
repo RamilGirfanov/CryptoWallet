@@ -8,143 +8,87 @@
 import UIKit
 
 final class DescriptionScreenVC: UIViewController {
-
+    
+    // MARK: - ViewModel
+    
+    private var viewModel: DescriptionVMProtokol?
+    
+    
+    // MARK: - View
+    
+    private let descriptionScreen = DescriptionScreen()
+    
+    
+    // MARK: - init
+    
+    init(viewModel: DescriptionVMProtokol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     // MARK: - Lifecycle
+    
+    override func loadView() {
+        super.loadView()
+        view = descriptionScreen
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        layout()
+        let coin = viewModel?.getCoin()
+        setupData(coin: coin)
     }
     
-    // MARK: - UIObjects
-    
-    private let symbolLabel: UILabel = {
-        let symbolLabel = UILabel()
-        symbolLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        symbolLabel.translatesAutoresizingMaskIntoConstraints = false
-        return symbolLabel
-    }()
-    
-    private let nameLabel: UILabel = {
-        let nameLabel = UILabel()
-        nameLabel.font = .systemFont(ofSize: 20)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        return nameLabel
-    }()
-    
-    private let textStack: UIStackView = {
-        let textStack = UIStackView()
-        textStack.axis = .vertical
-        textStack.distribution = .fillEqually
-        textStack.translatesAutoresizingMaskIntoConstraints = false
-        return textStack
-    }()
-    
-    private let priceUsdTextLabel: UILabel = {
-        let priceUsdTextLabel = UILabel()
-        priceUsdTextLabel.text = "Стоимость в USD: "
-        priceUsdTextLabel.font = .systemFont(ofSize: 15)
-        priceUsdTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        return priceUsdTextLabel
-    }()
-    
-    private let priceEthTextLabel: UILabel = {
-        let priceEthTextLabel = UILabel()
-        priceEthTextLabel.text = "Стоимость в ETH: "
-        priceEthTextLabel.font = .systemFont(ofSize: 15)
-        priceEthTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        return priceEthTextLabel
-    }()
-    
-    private let changeUsdLastHourTextLabel: UILabel = {
-        let changeUsdLastHourTextLabel = UILabel()
-        changeUsdLastHourTextLabel.text = "Изменение стоимости в USD за час: "
-        changeUsdLastHourTextLabel.font = .systemFont(ofSize: 15)
-        changeUsdLastHourTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        return changeUsdLastHourTextLabel
-    }()
-    
-    
-    private let changeUsdLastDayTextLabel: UILabel = {
-        let changeUsdLastDayTextLabel = UILabel()
-        changeUsdLastDayTextLabel.text = "Изменение стоимости в USD за сутки: "
-        changeUsdLastDayTextLabel.font = .systemFont(ofSize: 15)
-        changeUsdLastDayTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        return changeUsdLastDayTextLabel
-    }()
-    
-    private let dataStack: UIStackView = {
-        let textStack = UIStackView()
-        textStack.axis = .vertical
-        textStack.distribution = .fillEqually
-        textStack.translatesAutoresizingMaskIntoConstraints = false
-        return textStack
-    }()
-    
-    private let priceUsdLabel: UILabel = {
-        let priceUsdLabel = UILabel()
-        priceUsdLabel.font = .systemFont(ofSize: 15)
-        priceUsdLabel.translatesAutoresizingMaskIntoConstraints = false
-        return priceUsdLabel
-    }()
-    
-    private let priceEthLabel: UILabel = {
-        let priceEthLabel = UILabel()
-        priceEthLabel.font = .systemFont(ofSize: 15)
-        priceEthLabel.translatesAutoresizingMaskIntoConstraints = false
-        return priceEthLabel
-    }()
-    
-    private let changeUsdLastHourLabel: UILabel = {
-        let changeUsdLastHourLabel = UILabel()
-        changeUsdLastHourLabel.font = .systemFont(ofSize: 15)
-        changeUsdLastHourLabel.translatesAutoresizingMaskIntoConstraints = false
-        return changeUsdLastHourLabel
-    }()
-    
-    
-    private let changeUsdLastDayLabel: UILabel = {
-        let changeUsdLastDayLabel = UILabel()
-        changeUsdLastDayLabel.font = .systemFont(ofSize: 15)
-        changeUsdLastDayLabel.translatesAutoresizingMaskIntoConstraints = false
-        return changeUsdLastDayLabel
-    }()
-    
-    private let stackForStack: UIStackView = {
-        let stackForStack = UIStackView()
-        stackForStack.axis = .horizontal
-        stackForStack.distribution = .fillEqually
-        stackForStack.translatesAutoresizingMaskIntoConstraints = false
-        return stackForStack
-    }()
-
-
-    // MARK: - Layout
-    
-    private func layout() {
-        [symbolLabel, nameLabel, stackForStack].forEach { view.addSubview($0) }
+    private func setupData(coin: Coin?) {
+        if let image = coin?.imageData {
+            descriptionScreen.image.image = UIImage(data: image)
+        }
         
-        [textStack, dataStack].forEach { stackForStack.addArrangedSubview($0)}
+        if let name = coin?.name {
+            descriptionScreen.nameLabel.text = name
+        } else {
+            descriptionScreen.nameLabel.text = "Данных нет"
+        }
         
-        [priceUsdTextLabel, priceEthTextLabel, changeUsdLastHourTextLabel, changeUsdLastDayTextLabel].forEach { textStack.addArrangedSubview($0)}
-        [priceUsdLabel, priceEthLabel, changeUsdLastHourLabel, changeUsdLastDayLabel].forEach { dataStack.addArrangedSubview($0)}
+        if let symbol = coin?.symbol {
+            descriptionScreen.symbolLabel.text = symbol
+        } else {
+            descriptionScreen.symbolLabel.text = "Данных нет"
+        }
         
-        let safeIndent1: CGFloat = 16
-        let safeIndent2: CGFloat = 8
+        if let priceString = coin?.priceString {
+            descriptionScreen.priceLabel.text = "$" + priceString
+        } else {
+            descriptionScreen.priceLabel.text = "Данных нет"
+        }
         
-        NSLayoutConstraint.activate([
-            symbolLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            
-            nameLabel.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor, constant: safeIndent2),
-            
-            stackForStack.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor, constant: safeIndent1),
-            stackForStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: safeIndent1),
-            stackForStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent1)
-        ])
+        if let changePriceLast1HourString = coin?.changePriceLast1HourString {
+            descriptionScreen.changePriceLast1Hour.text = "$" + changePriceLast1HourString
+        } else {
+            descriptionScreen.changePriceLast1Hour.text = "Данных нет"
+        }
+        
+        if let changePercentLast1HourString = coin?.changePercentLast1HourString {
+            descriptionScreen.changePercentLast1Hour.text = "(" + changePercentLast1HourString + "%" + ")"
+        } else {
+            descriptionScreen.changePercentLast1Hour.text = "Данных нет"
+        }
+        
+        if let changePriceLast24HourString = coin?.changePriceLast24HourString {
+            descriptionScreen.changePriceLast24Hour.text = "$" + changePriceLast24HourString
+        } else {
+            descriptionScreen.changePriceLast24Hour.text = "Данных нет"
+        }
+        
+        if let changePercentLast24HourString = coin?.changePercentLast24HourString {
+            descriptionScreen.changePercentLast24Hour.text = "(" + changePercentLast24HourString + "%" + ")"
+        } else {
+            descriptionScreen.changePercentLast24Hour.text = "Данных нет"
+        }
     }
-    
-//    private func setupData(data: Coin) {
-//
-//    }
 }

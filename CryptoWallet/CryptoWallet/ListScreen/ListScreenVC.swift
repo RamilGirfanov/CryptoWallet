@@ -85,7 +85,11 @@ final class ListScreenVC: UIViewController {
 extension ListScreenVC {
     
     private func showCoin(index: Int) {
+        let coin = coinArray[index]
+        let descriptionVM = DescriptionScreenVM(coin: coin)
+        let descriptionVC = DescriptionScreenVC(viewModel: descriptionVM)
         
+        present(descriptionVC, animated: true)
     }
     
     

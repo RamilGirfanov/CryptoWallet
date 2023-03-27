@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Network {
+class Network: NetworkProtocol {
     private let coinList = ["btc",
                     "eth",
                     "tron",

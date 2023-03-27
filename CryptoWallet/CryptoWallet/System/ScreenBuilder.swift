@@ -21,28 +21,16 @@ final class ScreenBuilder {
     static let shared = ScreenBuilder()
     private init() {}
     
-    // Функция для предустановки логина и пароля
-    #warning("Сделать экран регистрации")
-    func setupLoginData() {
-        let login = "1234"
-        let loginKey = UDEnterKeys.login
-        UserDefaults.standard.set(login, forKey: loginKey)
-        
-        let pass = "1234"
-        let passKey = UDEnterKeys.password
-        UserDefaults.standard.set(pass, forKey: passKey)
-    }
-    
     func buildScreen(VCType: VCType) -> UINavigationController {
         switch VCType {
         case .loginScreen:
-            let viewModel = LoginScreenVM(account: Models.account)
-            let screen = LoginScreenVC(viewModel: viewModel)
-            return MyNavigationController(rootViewController: screen)
+            let loginVM = LoginScreenVM(account: Models.account)
+            let loginScreen = LoginScreenVC(viewModel: loginVM)
+            return MyNavigationController(rootViewController: loginScreen)
         case .listScreen:
-            let viewModel = ListScreenVM()
-            let screen = ListScreenVC(viewModel: viewModel)
-            return MyNavigationController(rootViewController: screen)
+            let listVM = ListScreenVM(network: Models.network)
+            let listScreen = ListScreenVC(viewModel: listVM)
+            return MyNavigationController(rootViewController: listScreen)
         }
     }
 }

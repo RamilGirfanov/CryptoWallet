@@ -36,6 +36,7 @@
 		7474592329CDE54F00CD6748 /* SortingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592229CDE54F00CD6748 /* SortingCell.swift */; };
 		7474592529CDE75200CD6748 /* SortingVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592429CDE75200CD6748 /* SortingVMProtocol.swift */; };
 		7474592729CED57B00CD6748 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592629CED57B00CD6748 /* GlobalExtensions.swift */; };
+		7474592929D1B71E00CD6748 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592829D1B71E00CD6748 /* NetworkProtocol.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
@@ -75,6 +76,7 @@
 		7474592229CDE54F00CD6748 /* SortingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCell.swift; sourceTree = "<group>"; };
 		7474592429CDE75200CD6748 /* SortingVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingVMProtocol.swift; sourceTree = "<group>"; };
 		7474592629CED57B00CD6748 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
+		7474592829D1B71E00CD6748 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				7449913A29C4914F00906553 /* LoginVMProtocol.swift */,
 				74E8E9DF29C0DADE00F10E34 /* ListVMProtocol.swift */,
+				7474592829D1B71E00CD6748 /* NetworkProtocol.swift */,
 				7474592429CDE75200CD6748 /* SortingVMProtocol.swift */,
 			);
 			path = Protocols;
@@ -309,6 +312,7 @@
 				7417F8B229B4C0B3007D92C4 /* LoginScreenVC.swift in Sources */,
 				74522EEB29C72E1C003BC12C /* NetworkManagerDanya.swift in Sources */,
 				74522EF229C75956003BC12C /* ListScreenView.swift in Sources */,
+				7474592929D1B71E00CD6748 /* NetworkProtocol.swift in Sources */,
 				74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */,
 				741029F829B559440078E88D /* CoinCell.swift in Sources */,
 				741029FA29B559BA0078E88D /* ListScreenVC.swift in Sources */,

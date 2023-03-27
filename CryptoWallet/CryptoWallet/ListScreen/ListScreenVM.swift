@@ -13,15 +13,18 @@ final class ListScreenVM: ListVMProtocol {
     
     private var account = Account()
     
-    private var network = Network()
+    private var network: NetworkProtocol?
     
     private var coinArray: [Coin] = []
     
+    init(network: NetworkProtocol) {
+        self.network = network
+    }
     
     // MARK: - VMProcol
     
     func getData() {
-        network.getCoins { [weak self] coin in
+        network?.getCoins { [weak self] coin in
             guard let self = self else { return }
             self.coinArray.append(coin)
             self.updateView(self.coinArray)

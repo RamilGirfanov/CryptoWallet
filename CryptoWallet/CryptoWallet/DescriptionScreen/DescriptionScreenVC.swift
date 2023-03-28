@@ -61,31 +61,31 @@ final class DescriptionScreenVC: UIViewController {
             descriptionScreen.symbolLabel.text = "Данных нет"
         }
         
-        if let priceString = coin?.priceString {
+        if let priceString = coin?.priceUsd?.toString {
             descriptionScreen.priceLabel.text = "$" + priceString
         } else {
             descriptionScreen.priceLabel.text = "Данных нет"
         }
         
-        if let changePriceLast1HourString = coin?.changePriceLast1HourString {
+        if let changePriceLast1HourString = coin?.changePriceLast1Hour?.toString {
             descriptionScreen.changePriceLast1Hour.text = "$" + changePriceLast1HourString
         } else {
             descriptionScreen.changePriceLast1Hour.text = "Данных нет"
         }
         
-        if let changePercentLast1HourString = coin?.changePercentLast1HourString {
+        if let changePercentLast1HourString = coin?.percentChangeUsdLast1Hour?.toString {
             descriptionScreen.changePercentLast1Hour.text = "(" + changePercentLast1HourString + "%" + ")"
         } else {
             descriptionScreen.changePercentLast1Hour.text = "Данных нет"
         }
         
-        if let changePriceLast24HourString = coin?.changePriceLast24HourString {
+        if let changePriceLast24HourString = coin?.changePriceLast24Hour?.toString {
             descriptionScreen.changePriceLast24Hour.text = "$" + changePriceLast24HourString
         } else {
             descriptionScreen.changePriceLast24Hour.text = "Данных нет"
         }
         
-        if let changePercentLast24HourString = coin?.changePercentLast24HourString {
+        if let changePercentLast24HourString = coin?.percentChangeUsdLast24Hours?.toString {
             descriptionScreen.changePercentLast24Hour.text = "(" + changePercentLast24HourString + "%" + ")"
         } else {
             descriptionScreen.changePercentLast24Hour.text = "Данных нет"

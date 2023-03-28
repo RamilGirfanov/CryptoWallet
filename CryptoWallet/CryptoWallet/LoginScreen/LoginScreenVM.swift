@@ -49,10 +49,10 @@ final class LoginScreenVM: LoginVMProtocol {
     // Функция для выхода
     private func logout() {
         account.enteredStatus = false
-
+        
         RootVCManager.shared.changeRootVC(VCType: .loginScreen)
     }
-
+    
     
     // MARK: - LoginVMProtocol
     

@@ -10,7 +10,7 @@ import Foundation
 final class SortingScreenVM: SortingVMProtocol {
     
     // MARK: - Model
-
+    
     private let sorting = Sorting()
     
     

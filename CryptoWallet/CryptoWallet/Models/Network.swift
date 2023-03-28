@@ -9,15 +9,15 @@ import Foundation
 
 class Network: NetworkProtocol {
     private let coinList = ["btc",
-                    "eth",
-                    "tron",
-                    "luna",
-                    "polkadot",
-                    "dogecoin",
-                    "tether",
-                    "stellar",
-                    "cardano",
-                    "xrp"]
+                            "eth",
+                            "tron",
+                            "luna",
+                            "polkadot",
+                            "dogecoin",
+                            "tether",
+                            "stellar",
+                            "cardano",
+                            "xrp"]
     
     private var coinString = ""
     

@@ -12,10 +12,10 @@ final class LoginScreenView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     // MARK: - UIObjects
-
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "loginBackgroundImage")
@@ -85,9 +85,13 @@ final class LoginScreenView: UIView {
     // MARK: - Layout
     
     private func layout() {
-        [imageView, label, stack, enterButton].forEach { addSubview($0) }
+        [imageView,
+         label,
+         stack,
+         enterButton].forEach { addSubview($0) }
         
-        [loginTextField, passTextField].forEach { stack.addArrangedSubview($0) }
+        [loginTextField,
+         passTextField].forEach { stack.addArrangedSubview($0) }
         
         let safeIndent: CGFloat = 16
         

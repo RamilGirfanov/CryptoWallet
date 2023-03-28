@@ -45,29 +45,9 @@ extension UIViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
+// Расшитение типа Double для перевода значения в String
 extension Double {
     var toString: String? {
         String(format: "%.2f", self)
     }
 }
-
-//extension URL {
-//    static func endpoint(for coin: String) -> URL {
-//        var baseEndpoint.assets = self.baseEndpoimt
-//        baseEndpoint.fragment = "assets"
-//        baseEndpoint.fragment = coin
-//        
-//        guard let url = URL(string: "https://data.messari.io/api/v1/assets/\(coin)/metrics") else {
-//            preconditionFailure("Invalid url")
-//        }
-//        return url
-//    }
-//
-//    var baseEndpoimt: URLComponents {
-//        var components = URLComponents()
-//        components.scheme = "http://"
-//        components.host = "data.messari.io"
-//
-//        return components
-//    }
-//}

@@ -44,7 +44,8 @@ final class ListScreen: UIView {
     // MARK: - Layout
     
     private func layout() {
-        [table, activityIndicator].forEach { addSubview($0) }
+        [table,
+         activityIndicator].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             table.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),

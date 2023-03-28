@@ -17,6 +17,7 @@ enum Models {
     static let network = Network()
 }
 
+
 final class ScreenBuilder {
     static let shared = ScreenBuilder()
     private init() {}

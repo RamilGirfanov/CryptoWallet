@@ -12,7 +12,7 @@ final class SortingScreenVC: UIViewController {
     // MARK: - ViewModel
     
     private var viewModel: SortingVMProtocol?
-        
+    
     
     // MARK: - View
     
@@ -29,8 +29,8 @@ final class SortingScreenVC: UIViewController {
     init(viewModel: SortingVMProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-     }
-
+    }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -61,7 +61,7 @@ extension SortingScreenVC: UITableViewDataSource {
         
         if let sortingTypes = viewModel?.getSortingTypes() {
             var types: [String] = []
-
+            
             sortingTypes.forEach { type in
                 types.append(type.rawValue)
             }

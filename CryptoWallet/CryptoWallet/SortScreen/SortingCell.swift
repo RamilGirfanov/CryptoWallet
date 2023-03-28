@@ -23,7 +23,7 @@ final class SortingCell: UITableViewCell {
     
     
     // MARK: - UIObjects
-
+    
     private let sortNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -31,13 +31,13 @@ final class SortingCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-
+    
+    
     // MARK: - Layout
     
     private func layout() {
         contentView.addSubview(sortNameLabel)
-                
+        
         NSLayoutConstraint.activate([
             sortNameLabel.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
             sortNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),

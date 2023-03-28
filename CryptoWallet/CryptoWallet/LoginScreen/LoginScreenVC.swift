@@ -29,7 +29,7 @@ final class LoginScreenVC: UIViewController {
     init(viewModel: LoginVMProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-     }
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -47,10 +47,10 @@ final class LoginScreenVC: UIViewController {
         addTargets()
         setupToHideKeyboardOnTapOnView()
     }
-
+    
     
     // MARK: - Функционал
-
+    
     private func addTargets() {
         loginScreen.enterButton.addTarget(self,
                                           action: #selector(enter),

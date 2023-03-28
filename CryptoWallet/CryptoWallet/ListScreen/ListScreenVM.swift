@@ -60,10 +60,10 @@ final class ListScreenVM: ListVMProtocol {
 
 extension ListScreenVM: LoginVMProtocol {
     func enter(login: String, pass: String) {}
-
+    
     func out() {
         account.enteredStatus = false
-                
+        
         RootVCManager.shared.changeRootVC(VCType: .loginScreen)
     }
 }

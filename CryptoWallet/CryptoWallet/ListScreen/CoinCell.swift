@@ -48,7 +48,7 @@ final class CoinCell: UITableViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-
+    
     private let symbolLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
@@ -80,17 +80,21 @@ final class CoinCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     
     // MARK: - Layout
     
     private func layout() {
         contentView.addSubview(firstStack)
         
-        [coinImage, secontStack].forEach { firstStack.addArrangedSubview($0)}
+        [coinImage,
+         secontStack].forEach { firstStack.addArrangedSubview($0)}
         
-        [symbolLabel, priceLabel, change1hPriceLabel, change24hPriceLabel].forEach { secontStack.addArrangedSubview($0)}
-                
+        [symbolLabel,
+         priceLabel,
+         change1hPriceLabel,
+         change24hPriceLabel].forEach { secontStack.addArrangedSubview($0)}
+        
         let safeIndent: CGFloat = 8
         
         NSLayoutConstraint.activate([
@@ -114,19 +118,19 @@ final class CoinCell: UITableViewCell {
         
         symbolLabel.text = coin.symbol ?? "Данных нет"
         
-        if let price = coin.priceString {
+        if let price = coin.priceUsd?.toString {
             priceLabel.text = "$" + price
         } else {
             priceLabel.text = "Данных нет"
         }
         
-        if let changePriceLast1Hour = coin.changePriceLast1HourString {
+        if let changePriceLast1Hour = coin.changePriceLast1Hour?.toString {
             change1hPriceLabel.text = "Дельта цены за 1 час: " + changePriceLast1Hour
         } else {
             change1hPriceLabel.text = "Данных нет"
         }
-
-        if let changePriceLast24Hour = coin.changePriceLast24HourString {
+        
+        if let changePriceLast24Hour = coin.changePriceLast24Hour?.toString {
             change24hPriceLabel.text = "Дельта цены за 24 часа: " + changePriceLast24Hour
         } else {
             change24hPriceLabel.text = "Данных нет"

@@ -108,7 +108,16 @@ final class DescriptionScreen: UIView {
     // MARK: - Layout
     
     private func layout() {
-        [image, nameLabel, symbolLabel, priceLabel, change1HourText, changePriceLast1Hour, changePercentLast1Hour, change24HourText, changePriceLast24Hour, changePercentLast24Hour].forEach { addSubview($0)}
+        [image,
+         nameLabel,
+         symbolLabel,
+         priceLabel,
+         change1HourText,
+         changePriceLast1Hour,
+         changePercentLast1Hour,
+         change24HourText,
+         changePriceLast24Hour,
+         changePercentLast24Hour].forEach { addSubview($0)}
         
         let safeIndent1: CGFloat = 16
         let safeIndent2: CGFloat = 8

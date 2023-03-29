@@ -83,8 +83,7 @@ class Network: NetworkProtocol {
     // Функция получения монеты из сети
     func getCoins(completionHandler: @escaping (Coin) -> Void) {
         
-        
-        // Получаем массив ссылок на монеты
+        // Получение массива ссылок на монеты
         let urlArray = getUrlArray()
         
         // DispatchGroup для запроса в сеть
@@ -103,6 +102,7 @@ class Network: NetworkProtocol {
                     return
                 }
                 
+                // Получение изображения для монеты
                 if let coinID = coin.id {
                     self.coinID = coinID
                     
@@ -114,9 +114,8 @@ class Network: NetworkProtocol {
                 }
                 
                 completionHandler(coin)
+                group.leave()
             }.resume()
-            
-            group.leave()
         }
     }
 }

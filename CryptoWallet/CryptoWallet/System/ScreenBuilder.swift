@@ -15,6 +15,7 @@ enum VCType {
 enum Models {
     static let account = Account()
     static let network = Network()
+    static let sorting = Sorting()
 }
 
 
@@ -26,12 +27,17 @@ final class ScreenBuilder {
         switch VCType {
         case .loginScreen:
             let loginVM = LoginScreenVM(account: Models.account)
+            
             let loginScreen = LoginScreenVC(viewModel: loginVM)
-            return MyNavigationController(rootViewController: loginScreen)
+            
+            return UINavigationController(rootViewController: loginScreen)
         case .listScreen:
-            let listVM = ListScreenVM(network: Models.network)
+            let listVM = ListScreenVM(network: Models.network,
+                                      account: Models.account)
+            
             let listScreen = ListScreenVC(viewModel: listVM)
-            return MyNavigationController(rootViewController: listScreen)
+            
+            return UINavigationController(rootViewController: listScreen)
         }
     }
 }

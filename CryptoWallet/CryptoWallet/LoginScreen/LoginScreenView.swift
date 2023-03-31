@@ -75,8 +75,8 @@ final class LoginScreenView: UIView {
     lazy var enterButton: UIButton = {
         let enterButton = UIButton()
         enterButton.setTitle("Войти", for: .normal)
-        enterButton.backgroundColor = commonColor
-        enterButton.layer.cornerRadius = commonCornerRadius
+        enterButton.backgroundColor = GeneralProperties.color
+        enterButton.layer.cornerRadius = GeneralProperties.cornerRadius
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         return enterButton
     }()
@@ -101,7 +101,7 @@ final class LoginScreenView: UIView {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            stack.heightAnchor.constraint(equalToConstant: commonHeighTapObjects * 2),
+            stack.heightAnchor.constraint(equalToConstant: GeneralProperties.heighTapObjects * 2),
             stack.centerYAnchor.constraint(equalTo: centerYAnchor),
             stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
             stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
@@ -112,7 +112,7 @@ final class LoginScreenView: UIView {
             enterButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: safeIndent),
             enterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
             enterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
-            enterButton.heightAnchor.constraint(equalToConstant: commonHeighTapObjects)
+            enterButton.heightAnchor.constraint(equalToConstant: GeneralProperties.heighTapObjects)
         ])
     }
 }

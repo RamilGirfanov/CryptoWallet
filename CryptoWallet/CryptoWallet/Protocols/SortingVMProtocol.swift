@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SortingVMProtocol {
-    func getSortingTypes() -> [Sorting.SortingTypes]
+    func getSortingTypes() -> [SortingTypes]?
     
-    var passSortingType: (Sorting.SortingTypes) -> Void { get set }
+    var passSortingType: (SortingTypes) -> Void { get set }
 }

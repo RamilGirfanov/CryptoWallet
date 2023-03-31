@@ -7,13 +7,13 @@
 
 import Foundation
 
-final class ListScreenVM: ListVMProtocol {
+final class ListScreenVM: ListVMProtocol, LoginVMProtocol {
     
     // MARK: - Models
     
-    private var account = Account()
-    
     private var network: NetworkProtocol?
+    
+    private var account: AccountProtocol?
     
     private var coinArray: [Coin] = [] {
         didSet {
@@ -21,11 +21,16 @@ final class ListScreenVM: ListVMProtocol {
         }
     }
     
-    init(network: NetworkProtocol) {
+    
+    // MARK: - init
+    
+    init(network: NetworkProtocol, account: AccountProtocol) {
         self.network = network
+        self.account = account
     }
     
-    // MARK: - VMProcol
+    
+    // MARK: - ListVMProtocol
     
     func getData() {
         network?.getCoins { [weak self] coins in
@@ -36,7 +41,7 @@ final class ListScreenVM: ListVMProtocol {
     
     var updateView: ([Coin]) -> Void = { _ in }
     
-    func sortCoins(sortType: Sorting.SortingTypes) {
+    func sortCoins(sortType: SortingTypes) {
         switch sortType {
         case .by24HoursHiToLo:
             coinArray.sort {
@@ -58,13 +63,14 @@ final class ListScreenVM: ListVMProtocol {
             }
         }
     }
-}
-
-extension ListScreenVM: LoginVMProtocol {
+    
+    
+    // MARK: - LoginVMProtocol
+    
     func enter(login: String, pass: String) {}
     
     func out() {
-        account.enteredStatus = false
+        account?.enteredStatus = false
         
         RootVCManager.shared.changeRootVC(VCType: .loginScreen)
     }

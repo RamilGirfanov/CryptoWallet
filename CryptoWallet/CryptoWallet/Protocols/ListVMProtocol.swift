@@ -12,5 +12,5 @@ protocol ListVMProtocol {
     
     var updateView: ([Coin]) -> Void { get set }
     
-    func sortCoins(sortType: Sorting.SortingTypes)
+    func sortCoins(sortType: SortingTypes)
 }

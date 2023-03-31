@@ -39,7 +39,7 @@ final class SortingCell: UITableViewCell {
         contentView.addSubview(sortNameLabel)
         
         NSLayoutConstraint.activate([
-            sortNameLabel.heightAnchor.constraint(equalToConstant: commonHeighTapObjects),
+            sortNameLabel.heightAnchor.constraint(equalToConstant: GeneralProperties.heighTapObjects),
             sortNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
             sortNameLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             sortNameLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),

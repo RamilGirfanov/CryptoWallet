@@ -19,7 +19,6 @@
 		7449913B29C4914F00906553 /* LoginVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449913A29C4914F00906553 /* LoginVMProtocol.swift */; };
 		7449913D29C4928D00906553 /* LoginScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449913C29C4928D00906553 /* LoginScreenVM.swift */; };
 		744E51AB29BA103300BB14E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51AA29BA103300BB14E9 /* Constants.swift */; };
-		744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E51B229BA223F00BB14E9 /* MyNavigationController.swift */; };
 		74522EE729C725D7003BC12C /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EE629C725D7003BC12C /* LoginScreenView.swift */; };
 		74522EF229C75956003BC12C /* ListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF129C75956003BC12C /* ListScreenView.swift */; };
 		74522EF429C9AE53003BC12C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74522EF329C9AE53003BC12C /* Coin.swift */; };
@@ -34,6 +33,8 @@
 		7474592B29D1BA7100CD6748 /* DescriptionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592A29D1BA7100CD6748 /* DescriptionScreenView.swift */; };
 		7474592D29D1D71F00CD6748 /* DescriptionScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592C29D1D71F00CD6748 /* DescriptionScreenVM.swift */; };
 		7474592F29D1D77000CD6748 /* DescriptionVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474592E29D1D77000CD6748 /* DescriptionVMProtocol.swift */; };
+		7474593129D6FABB00CD6748 /* AccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474593029D6FABB00CD6748 /* AccountProtocol.swift */; };
+		7474593329D6FD2400CD6748 /* SortingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474593229D6FD2400CD6748 /* SortingProtocol.swift */; };
 		7477FE1829BB4352008192D3 /* ScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477FE1729BB4352008192D3 /* ScreenBuilder.swift */; };
 		74E8E9D929BB7D0D00F10E34 /* DescriptionScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */; };
 		74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E9DA29C0CE0F00F10E34 /* Network.swift */; };
@@ -56,7 +57,6 @@
 		7449913A29C4914F00906553 /* LoginVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVMProtocol.swift; sourceTree = "<group>"; };
 		7449913C29C4928D00906553 /* LoginScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenVM.swift; sourceTree = "<group>"; };
 		744E51AA29BA103300BB14E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		744E51B229BA223F00BB14E9 /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		74522EE629C725D7003BC12C /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		74522EF129C75956003BC12C /* ListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreenView.swift; sourceTree = "<group>"; };
 		74522EF329C9AE53003BC12C /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -71,6 +71,8 @@
 		7474592A29D1BA7100CD6748 /* DescriptionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenView.swift; sourceTree = "<group>"; };
 		7474592C29D1D71F00CD6748 /* DescriptionScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVM.swift; sourceTree = "<group>"; };
 		7474592E29D1D77000CD6748 /* DescriptionVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVMProtocol.swift; sourceTree = "<group>"; };
+		7474593029D6FABB00CD6748 /* AccountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProtocol.swift; sourceTree = "<group>"; };
+		7474593229D6FD2400CD6748 /* SortingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingProtocol.swift; sourceTree = "<group>"; };
 		7477FE1729BB4352008192D3 /* ScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilder.swift; sourceTree = "<group>"; };
 		74E8E9D829BB7D0D00F10E34 /* DescriptionScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenVC.swift; sourceTree = "<group>"; };
 		74E8E9DA29C0CE0F00F10E34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 			children = (
 				7417F8AD29B4C0B3007D92C4 /* AppDelegate.swift */,
 				7417F8AF29B4C0B3007D92C4 /* SceneDelegate.swift */,
-				744E51B229BA223F00BB14E9 /* MyNavigationController.swift */,
 				7477FE1729BB4352008192D3 /* ScreenBuilder.swift */,
 				744E51AA29BA103300BB14E9 /* Constants.swift */,
 				7474592629CED57B00CD6748 /* GlobalExtensions.swift */,
@@ -201,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				7474592829D1B71E00CD6748 /* NetworkProtocol.swift */,
+				7474593029D6FABB00CD6748 /* AccountProtocol.swift */,
+				7474593229D6FD2400CD6748 /* SortingProtocol.swift */,
 				7449913A29C4914F00906553 /* LoginVMProtocol.swift */,
 				74E8E9DF29C0DADE00F10E34 /* ListVMProtocol.swift */,
 				7474592429CDE75200CD6748 /* SortingVMProtocol.swift */,
@@ -287,11 +290,11 @@
 				7417F8B229B4C0B3007D92C4 /* LoginScreenVC.swift in Sources */,
 				7474592F29D1D77000CD6748 /* DescriptionVMProtocol.swift in Sources */,
 				74522EF229C75956003BC12C /* ListScreenView.swift in Sources */,
+				7474593329D6FD2400CD6748 /* SortingProtocol.swift in Sources */,
 				7474592929D1B71E00CD6748 /* NetworkProtocol.swift in Sources */,
 				74E8E9DB29C0CE0F00F10E34 /* Network.swift in Sources */,
 				741029F829B559440078E88D /* CoinCell.swift in Sources */,
 				741029FA29B559BA0078E88D /* ListScreenVC.swift in Sources */,
-				744E51B329BA223F00BB14E9 /* MyNavigationController.swift in Sources */,
 				7474592529CDE75200CD6748 /* SortingVMProtocol.swift in Sources */,
 				7449913929C48AC500906553 /* Account.swift in Sources */,
 				74522EF429C9AE53003BC12C /* Coin.swift in Sources */,
@@ -302,6 +305,7 @@
 				7449913729C39DFC00906553 /* CoinData.swift in Sources */,
 				7474591F29CCF8BF00CD6748 /* SortingScreenView.swift in Sources */,
 				7417F8AE29B4C0B3007D92C4 /* AppDelegate.swift in Sources */,
+				7474593129D6FABB00CD6748 /* AccountProtocol.swift in Sources */,
 				7417F8B029B4C0B3007D92C4 /* SceneDelegate.swift in Sources */,
 				7474591D29CCF6F200CD6748 /* SortingScreenVC.swift in Sources */,
 				7449913D29C4928D00906553 /* LoginScreenVM.swift in Sources */,

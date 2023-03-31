@@ -124,6 +124,5 @@ class Network: NetworkProtocol {
         group.notify(queue: DispatchQueue.main) {
             completionHandler(coinArray)
         }
-        
     }
 }

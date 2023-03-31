@@ -104,7 +104,7 @@ extension ListScreenVC {
     // Вызов экрана выбора сортировки
     @objc
     private func sortList() {
-        let sortingScreenVM = SortingScreenVM()
+        let sortingScreenVM = SortingScreenVM(sorting: Models.sorting)
         sortingScreenVM.passSortingType = { [weak self] type in
             guard let self = self else { return }
             self.viewModel?.sortCoins(sortType: type)

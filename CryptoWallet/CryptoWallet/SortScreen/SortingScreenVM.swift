@@ -11,12 +11,19 @@ final class SortingScreenVM: SortingVMProtocol {
     
     // MARK: - Model
     
-    private let sorting = Sorting()
+    private let sorting: Sorting?
     
+    // MARK: - init
     
-    func getSortingTypes() -> [Sorting.SortingTypes] {        
-        return sorting.allTypesOfSorting
+    init(sorting: Sorting) {
+        self.sorting = sorting
     }
     
-    var passSortingType: (Sorting.SortingTypes) -> Void = { _ in }
+    // MARK: - SortingVMProtocol
+    
+    func getSortingTypes() -> [SortingTypes]? {        
+        return sorting?.allTypesOfSorting
+    }
+    
+    var passSortingType: (SortingTypes) -> Void = { _ in }
 }

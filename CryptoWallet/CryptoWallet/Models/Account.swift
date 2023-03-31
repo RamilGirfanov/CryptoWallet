@@ -14,7 +14,7 @@ enum UDEnterKeys {
     static let enterStatus = "enterStatus"
 }
 
-struct Account {
+struct Account: AccountProtocol {
     var enteredStatus: Bool {
         get {
             UserDefaults.standard.bool(forKey: UDEnterKeys.enterStatus)
@@ -31,4 +31,3 @@ struct Account {
         UserDefaults.standard.string(forKey: UDEnterKeys.password)
     }
 }
-

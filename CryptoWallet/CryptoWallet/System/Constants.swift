@@ -7,20 +7,23 @@
 
 import UIKit
 
-let commonCornerRadius: CGFloat = 10
-
-let commonColor: UIColor = .systemBlue
-
-let commonHeighTapObjects: CGFloat = 44
-
-// Функция для предустановки логина и пароля
-#warning("Сделать экран регистрации")
-func setupLoginData() {
-    let login = "1234"
-    let loginKey = UDEnterKeys.login
-    UserDefaults.standard.set(login, forKey: loginKey)
+struct GeneralProperties {
+    static let cornerRadius: CGFloat = 10
     
-    let pass = "1234"
-    let passKey = UDEnterKeys.password
-    UserDefaults.standard.set(pass, forKey: passKey)
+    static let color: UIColor = .systemBlue
+    
+    static let heighTapObjects: CGFloat = 44
+    
+    
+    // Хардкод функция для предустановки логина и пароля
+    static func setupLoginData() {
+        let login = "1234"
+        let loginKey = UDEnterKeys.login
+        UserDefaults.standard.set(login, forKey: loginKey)
+        
+        let pass = "1234"
+        let passKey = UDEnterKeys.password
+        UserDefaults.standard.set(pass, forKey: passKey)
+    }
 }
+

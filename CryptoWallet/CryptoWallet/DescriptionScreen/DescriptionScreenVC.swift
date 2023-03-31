@@ -44,6 +44,8 @@ final class DescriptionScreenVC: UIViewController {
         setupData(coin: coin)
     }
     
+    // MARK: - Функционал
+    
     private func setupData(coin: Coin?) {
         if let image = coin?.imageData {
             descriptionScreen.image.image = UIImage(data: image)

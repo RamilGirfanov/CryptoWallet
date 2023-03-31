@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NetworkProtocol {
-    func getCoins(completionHandler: @escaping (Coin) -> Void)
+    func getCoins(completionHandler: @escaping ([Coin]) -> Void)
 }

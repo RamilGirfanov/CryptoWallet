@@ -15,7 +15,11 @@ final class ListScreenVM: ListVMProtocol {
     
     private var network: NetworkProtocol?
     
-    private var coinArray: [Coin] = []
+    private var coinArray: [Coin] = [] {
+        didSet {
+            updateView(coinArray)
+        }
+    }
     
     init(network: NetworkProtocol) {
         self.network = network
@@ -24,10 +28,9 @@ final class ListScreenVM: ListVMProtocol {
     // MARK: - VMProcol
     
     func getData() {
-        network?.getCoins { [weak self] coin in
+        network?.getCoins { [weak self] coins in
             guard let self = self else { return }
-            self.coinArray.append(coin)
-            self.updateView(self.coinArray)
+            self.coinArray = coins
         }
     }
     
@@ -54,7 +57,6 @@ final class ListScreenVM: ListVMProtocol {
                 $0.changePriceLast1Hour ?? 0 < $1.changePriceLast1Hour ?? 0
             }
         }
-        updateView(coinArray)
     }
 }
 

@@ -41,6 +41,12 @@ final class SortingScreenVC: UIViewController {
     override func loadView() {
         view = sortScreen
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        preferredContentSize = CGSize(width: sortScreen.table.contentSize.width,
+                                      height: sortScreen.table.contentSize.height)
+    }
 }
 
 

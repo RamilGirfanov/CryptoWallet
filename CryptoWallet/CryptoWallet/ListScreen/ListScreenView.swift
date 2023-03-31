@@ -51,7 +51,7 @@ final class ListScreen: UIView {
             table.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             table.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             table.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            table.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            table.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             activityIndicator.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             activityIndicator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),

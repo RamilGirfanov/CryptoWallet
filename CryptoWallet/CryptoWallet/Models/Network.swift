@@ -103,7 +103,7 @@ class Network: NetworkProtocol {
                 else {
                     return
                 }
-                
+
                 // Получение изображения для монеты
                 if let coinID = coin.id {
                     self.coinID = coinID
@@ -115,7 +115,9 @@ class Network: NetworkProtocol {
                     }
                 }
                 
-                coinArray.append(coin)
+                if coin.priceUsd != nil {
+                    coinArray.append(coin)
+                }
                 
                 group.leave()
             }.resume()

@@ -95,6 +95,13 @@ extension ListScreenVC {
     
     private func updateView() {
         DispatchQueue.main.async {
+            
+            if self.coinArray.isEmpty {
+                self.listScreen.noDataLabel.isHidden = false
+            } else {
+                self.listScreen.noDataLabel.isHidden = true
+            }
+            
             self.listScreen.table.reloadData()
             self.listScreen.activityIndicator.stopAnimating()
             self.listScreen.activityIndicator.isHidden = true

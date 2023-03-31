@@ -40,12 +40,23 @@ final class ListScreen: UIView {
         return activityIndicator
     }()
     
+    let noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Данных нет"
+        label.font = .systemFont(ofSize: 50, weight: .bold)
+        label.textColor = .secondaryLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        return label
+    }()
+    
     
     // MARK: - Layout
     
     private func layout() {
         [table,
-         activityIndicator].forEach { addSubview($0) }
+         activityIndicator,
+         noDataLabel].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             table.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -56,7 +67,10 @@ final class ListScreen: UIView {
             activityIndicator.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             activityIndicator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             activityIndicator.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            activityIndicator.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            activityIndicator.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            noDataLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            noDataLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
         ])
     }
 }

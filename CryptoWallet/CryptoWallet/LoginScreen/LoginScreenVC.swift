@@ -89,3 +89,32 @@ extension LoginScreenVC: UITextFieldDelegate {
         return true
     }
 }
+
+
+// MARK: - Обработка появления клавиатуры
+
+extension LoginScreenVC {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func kbShow(notification: NSNotification) {
+        if let kbSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            loginScreen.scrollView.contentInset.bottom = kbSize.height + 50
+            loginScreen.scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        }
+    }
+    
+    @objc private func kbHide() {
+        loginScreen.scrollView.contentInset = .zero
+        loginScreen.scrollView.verticalScrollIndicatorInsets = .zero
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}

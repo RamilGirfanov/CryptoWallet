@@ -16,6 +16,18 @@ final class LoginScreenView: UIView {
     
     // MARK: - UIObjects
     
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "loginBackgroundImage")
@@ -49,9 +61,6 @@ final class LoginScreenView: UIView {
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.placeholder = "Введите логин"
-        if let image = UIImage(named: "loginBackgroundImage") {
-            loginTextField.textColor = UIColor(patternImage: image)
-        }
         loginTextField.backgroundColor = .clear
         loginTextField.borderStyle = .roundedRect
         loginTextField.autocapitalizationType = .none
@@ -62,9 +71,6 @@ final class LoginScreenView: UIView {
     let passTextField: UITextField = {
         let passTextField = UITextField()
         passTextField.placeholder = "Введите пароль"
-        if let image = UIImage(named: "loginBackgroundImage") {
-            passTextField.textColor = UIColor(patternImage: image)
-        }
         passTextField.backgroundColor = .clear
         passTextField.isSecureTextEntry = true
         passTextField.borderStyle = .roundedRect
@@ -86,9 +92,13 @@ final class LoginScreenView: UIView {
     
     private func layout() {
         [imageView,
-         label,
+         scrollView].forEach { addSubview($0) }
+        
+        scrollView.addSubview(contentView)
+        
+        [label,
          stack,
-         enterButton].forEach { addSubview($0) }
+         enterButton].forEach { contentView.addSubview($0) }
         
         [loginTextField,
          passTextField].forEach { stack.addArrangedSubview($0) }
@@ -101,17 +111,29 @@ final class LoginScreenView: UIView {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            stack.heightAnchor.constraint(equalToConstant: GeneralProperties.heighTapObjects * 2),
-            stack.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
-            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
-            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            
+            stack.heightAnchor.constraint(equalToConstant: GeneralProperties.heighTapObjects * 2),
+            stack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: safeIndent),
+            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -safeIndent),
+            
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             label.bottomAnchor.constraint(equalTo: stack.topAnchor, constant: -safeIndent),
             
             enterButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: safeIndent),
-            enterButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: safeIndent),
-            enterButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -safeIndent),
+            enterButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: safeIndent),
+            enterButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -safeIndent),
             enterButton.heightAnchor.constraint(equalToConstant: GeneralProperties.heighTapObjects)
         ])
     }

@@ -78,7 +78,9 @@ final class ListScreenVM: ListVMProtocol, LoginVMProtocol {
     
     // MARK: - LoginVMProtocol
     
-    func enter(login: String, pass: String) {}
+    func enter(login: String, pass: String) -> Bool {
+        return true
+    }
     
     func out() {
         account?.enteredStatus = false

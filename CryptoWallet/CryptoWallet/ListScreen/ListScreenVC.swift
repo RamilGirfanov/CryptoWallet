@@ -136,13 +136,13 @@ extension ListScreenVC {
     }
     
     @objc
-    private func logOut() {
-        viewModel?.out()
+    private func refresh() {
+        viewModel?.getData()
     }
     
     @objc
-    private func refresh() {
-        viewModel?.getData()
+    private func logOut() {
+        viewModel?.out()
     }
 }
 

@@ -76,7 +76,15 @@ final class LoginScreenVC: UIViewController {
         guard let login = loginScreen.loginTextField.text else { return }
         guard let pass = loginScreen.passTextField.text else { return }
         
-        viewModel.enter(login: login, pass: pass)
+        if !viewModel.enter(login: login, pass: pass) {
+            let alert = UIAlertController(title: "Проверьте данные",
+                                          message: "Логин или пароль введены неверно",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok",
+                                         style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true)
+        }
     }
 }
 

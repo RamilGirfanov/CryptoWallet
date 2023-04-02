@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginVMProtocol {
-    func enter(login: String, pass: String)
+    func enter(login: String, pass: String) -> Bool
     
     func out()
 }

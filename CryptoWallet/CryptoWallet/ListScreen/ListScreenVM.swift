@@ -21,6 +21,8 @@ final class ListScreenVM: ListVMProtocol, LoginVMProtocol {
         }
     }
     
+    private var sortType: SortingTypes = .byPriceMax
+    
     
     // MARK: - init
     
@@ -36,18 +38,28 @@ final class ListScreenVM: ListVMProtocol, LoginVMProtocol {
         network?.getCoins { [weak self] coins in
             guard let self = self else { return }
             self.coinArray = coins
+            sortCoins(sortType: sortType)
         }
     }
     
     var updateView: ([Coin]) -> Void = { _ in }
     
     func sortCoins(sortType: SortingTypes) {
+        self.sortType = sortType
+        
         switch sortType {
+        case .byPriceMax:
+            coinArray.sort {
+                $0.priceUsd ?? 0 > $1.priceUsd ?? 0
+            }
+        case .byPriceMin:
+            coinArray.sort {
+                $0.priceUsd ?? 0 < $1.priceUsd ?? 0
+            }
         case .by24HoursHiToLo:
             coinArray.sort {
                 $0.changePriceLast24Hour ?? 0 > $1.changePriceLast24Hour ?? 0
             }
-            
         case .by24HoursLoToHi:
             coinArray.sort {
                 $0.changePriceLast24Hour ?? 0 < $1.changePriceLast24Hour ?? 0
@@ -56,7 +68,6 @@ final class ListScreenVM: ListVMProtocol, LoginVMProtocol {
             coinArray.sort {
                 $0.changePriceLast1Hour ?? 0 > $1.changePriceLast1Hour ?? 0
             }
-            
         case .by1HourLoToHi:
             coinArray.sort {
                 $0.changePriceLast1Hour ?? 0 < $1.changePriceLast1Hour ?? 0

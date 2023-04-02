@@ -23,6 +23,7 @@ final class ListScreenVC: UIViewController {
         let listScreen = ListScreen()
         listScreen.table.dataSource = self
         listScreen.table.delegate = self
+        listScreen.table.refreshControl = UIRefreshControl()
         return listScreen
     }()
     
@@ -76,6 +77,8 @@ final class ListScreenVC: UIViewController {
                                               action: #selector(logOut))
         
         navigationItem.leftBarButtonItem = barButtonLogOut
+        
+        listScreen.table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
 }
 
@@ -83,7 +86,6 @@ final class ListScreenVC: UIViewController {
 // MARK: - Функционал
 
 extension ListScreenVC {
-    
     private func showCoin(index: Int) {
         let coin = coinArray[index]
         let descriptionVM = DescriptionScreenVM(coin: coin)
@@ -91,7 +93,6 @@ extension ListScreenVC {
         
         present(descriptionVC, animated: true)
     }
-    
     
     private func updateView() {
         DispatchQueue.main.async {
@@ -105,6 +106,7 @@ extension ListScreenVC {
             self.listScreen.table.reloadData()
             self.listScreen.activityIndicator.stopAnimating()
             self.listScreen.activityIndicator.isHidden = true
+            self.listScreen.table.refreshControl?.endRefreshing()
         }
     }
     
@@ -136,6 +138,11 @@ extension ListScreenVC {
     @objc
     private func logOut() {
         viewModel?.out()
+    }
+    
+    @objc
+    private func refresh() {
+        viewModel?.getData()
     }
 }
 

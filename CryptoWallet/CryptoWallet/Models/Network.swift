@@ -123,7 +123,7 @@ class Network: NetworkProtocol {
             }.resume()
         }
         
-        group.notify(queue: DispatchQueue.main) {
+        group.notify(queue: .main) {
             completionHandler(coinArray)
         }
     }

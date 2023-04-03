@@ -10,6 +10,7 @@ import UIKit
 final class DescriptionScreen: UIView {
     
     // MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
@@ -32,6 +33,7 @@ final class DescriptionScreen: UIView {
     
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 30, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +42,7 @@ final class DescriptionScreen: UIView {
     
     let symbolLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +51,7 @@ final class DescriptionScreen: UIView {
     
     let priceLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 25)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +69,7 @@ final class DescriptionScreen: UIView {
     
     let changePriceLast1Hour: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +78,7 @@ final class DescriptionScreen: UIView {
     
     let changePercentLast1Hour: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +96,7 @@ final class DescriptionScreen: UIView {
     
     let changePriceLast24Hour: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +105,7 @@ final class DescriptionScreen: UIView {
     
     let changePercentLast24Hour: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -159,5 +167,42 @@ final class DescriptionScreen: UIView {
             changePercentLast24Hour.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             changePercentLast24Hour.widthAnchor.constraint(equalTo: changePriceLast24Hour.widthAnchor)
         ])
+    }
+    
+    
+    // MARK: - Настройка данных
+    
+    func setupData(coin: Coin?) {
+        if let coinImage = coin?.imageData {
+            image.image = UIImage(data: coinImage)
+        }
+        
+        if let name = coin?.name {
+            nameLabel.text = name
+        }
+        
+        if let symbol = coin?.symbol {
+            symbolLabel.text = symbol
+        }
+        
+        if let priceString = coin?.priceUsd?.toString {
+            priceLabel.text = "$" + priceString
+        }
+        
+        if let changePriceLast1HourString = coin?.changePriceLast1Hour?.toString {
+            changePriceLast1Hour.text = "$" + changePriceLast1HourString
+        }
+        
+        if let changePercentLast1HourString = coin?.percentChangeUsdLast1Hour?.toString {
+            changePercentLast1Hour.text = "(" + changePercentLast1HourString + "%" + ")"
+        }
+        
+        if let changePriceLast24HourString = coin?.changePriceLast24Hour?.toString {
+            changePriceLast24Hour.text = "$" + changePriceLast24HourString
+        }
+        
+        if let changePercentLast24HourString = coin?.percentChangeUsdLast24Hours?.toString {
+            changePercentLast24Hour.text = "(" + changePercentLast24HourString + "%" + ")"
+        }
     }
 }

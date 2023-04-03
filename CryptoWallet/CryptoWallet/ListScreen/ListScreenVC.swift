@@ -68,14 +68,12 @@ final class ListScreenVC: UIViewController {
                                             style: .plain,
                                             target: self,
                                             action: #selector(sortList))
-        
         navigationItem.rightBarButtonItem = barButtonSort
         
         let barButtonLogOut = UIBarButtonItem(image: UIImage(systemName: "figure.walk.arrival"),
                                               style: .plain,
                                               target: self,
                                               action: #selector(logOut))
-        
         navigationItem.leftBarButtonItem = barButtonLogOut
         
         listScreen.table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -106,6 +104,7 @@ extension ListScreenVC {
             self.listScreen.table.reloadData()
             self.listScreen.activityIndicator.stopAnimating()
             self.listScreen.activityIndicator.isHidden = true
+            
             self.listScreen.table.refreshControl?.endRefreshing()
         }
     }
@@ -135,11 +134,13 @@ extension ListScreenVC {
         present(sortingScreenVC, animated: true)
     }
     
+    // Перезагрузка таблицы
     @objc
     private func refresh() {
         viewModel?.getData()
     }
     
+    // Разлогинивание
     @objc
     private func logOut() {
         viewModel?.out()
@@ -147,7 +148,7 @@ extension ListScreenVC {
 }
 
 
-// MARK: - Расширение UITableView
+// MARK: - Расширения UITableView
 
 extension ListScreenVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -169,12 +170,10 @@ extension ListScreenVC: UITableViewDataSource {
 }
 
 extension ListScreenVC: UITableViewDelegate {
-    //    Возвращает динамическую высоту ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
     
-    //    Обрабатывает нажатие на ячейку
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCoin(index: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)

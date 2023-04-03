@@ -3,6 +3,7 @@ import UIKit
 final class LoginScreenView: UIView {
     
     // MARK: - init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground

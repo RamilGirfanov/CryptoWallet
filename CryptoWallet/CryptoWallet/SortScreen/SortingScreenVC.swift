@@ -50,7 +50,7 @@ final class SortingScreenVC: UIViewController {
 }
 
 
-//    MARK: - Расширение UITableViewDataSource
+// MARK: - Расширения UITableView
 
 extension SortingScreenVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,9 +79,6 @@ extension SortingScreenVC: UITableViewDataSource {
     }
 }
 
-
-//    MARK: - Расширение UITableViewDelegate
-
 extension SortingScreenVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
@@ -97,4 +94,3 @@ extension SortingScreenVC: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-

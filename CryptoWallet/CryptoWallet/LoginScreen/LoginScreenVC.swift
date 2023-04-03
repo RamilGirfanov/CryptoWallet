@@ -89,7 +89,7 @@ final class LoginScreenVC: UIViewController {
 }
 
 
-//  MARK: - Расширение для клавиатуры что бы она скрывалась по нажанию на return
+// MARK: - Расширение для клавиши return
 
 extension LoginScreenVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

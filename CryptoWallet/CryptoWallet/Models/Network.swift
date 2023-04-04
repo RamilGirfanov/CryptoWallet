@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Network: NetworkProtocol {
+final class Network: NetworkProtocol {
     private let coinList = ["btc",
                             "eth",
                             "tron",
@@ -68,7 +68,7 @@ class Network: NetworkProtocol {
         return nil
     }
     
-    // Функция получения изображения для монеты для монеты
+    // Функция получения изображения для монеты
     private func getImage(fromeURLString urlString: String,
                           completionHandler: @escaping (Data) -> Void) {
         guard
@@ -80,7 +80,7 @@ class Network: NetworkProtocol {
         completionHandler(imageData)
     }
     
-    // Функция получения монеты из сети
+    // Функция получения массива монет из сети
     func getCoins(completionHandler: @escaping ([Coin]) -> Void) {
         
         var coinArray: [Coin] = []

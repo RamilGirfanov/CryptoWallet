@@ -51,6 +51,7 @@ final class CoinCell: UITableViewCell {
     
     private let symbolLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 30, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +60,7 @@ final class CoinCell: UITableViewCell {
     
     private let priceLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +69,7 @@ final class CoinCell: UITableViewCell {
     
     private let change1hPriceLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 15)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +78,7 @@ final class CoinCell: UITableViewCell {
     
     private let change24hPriceLabel: UILabel = {
         let label = UILabel()
+        label.text = "Данных нет"
         label.font = .systemFont(ofSize: 15)
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -110,30 +114,26 @@ final class CoinCell: UITableViewCell {
     
     
     // MARK: - Заполнение ячеек данными
+    
     func pullCell(coin: Coin) {
-        
         if let imageData = coin.imageData {
             coinImage.image = UIImage(data: imageData)
         }
         
-        symbolLabel.text = coin.symbol ?? "Данных нет"
+        if let symbol = coin.symbol {
+            symbolLabel.text = symbol
+        }
         
         if let price = coin.priceUsd?.toString {
             priceLabel.text = "$" + price
-        } else {
-            priceLabel.text = "Данных нет"
         }
         
         if let changePriceLast1Hour = coin.changePriceLast1Hour?.toString {
             change1hPriceLabel.text = "Дельта цены за 1 час: " + changePriceLast1Hour
-        } else {
-            change1hPriceLabel.text = "Данных нет"
         }
         
         if let changePriceLast24Hour = coin.changePriceLast24Hour?.toString {
             change24hPriceLabel.text = "Дельта цены за 24 часа: " + changePriceLast24Hour
-        } else {
-            change24hPriceLabel.text = "Данных нет"
         }
     }
 }

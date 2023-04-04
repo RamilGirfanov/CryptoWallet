@@ -14,13 +14,15 @@ enum UDEnterKeys {
     static let enterStatus = "enterStatus"
 }
 
+
 struct Account: AccountProtocol {
     var enteredStatus: Bool {
         get {
             UserDefaults.standard.bool(forKey: UDEnterKeys.enterStatus)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: UDEnterKeys.enterStatus)
+            UserDefaults.standard.set(newValue,
+                                      forKey: UDEnterKeys.enterStatus)
         }
     }
     

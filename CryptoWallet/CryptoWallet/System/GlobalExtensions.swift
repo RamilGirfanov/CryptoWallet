@@ -14,7 +14,7 @@ extension UIView {
     }
 }
 
-// Расширение для блюра
+// Расширение для блюра картинки
 extension UIImageView {
     func applyBlurEffect() {
         let blurEffect = UIBlurEffect(style: .regular)
@@ -28,7 +28,8 @@ extension UIImageView {
 // Расширение для клавиатуры что бы она скрывалась по нажанию на любое место экрана
 extension UIViewController {
     func setupToHideKeyboardOnTapOnView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }

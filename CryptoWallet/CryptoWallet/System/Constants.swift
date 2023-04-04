@@ -14,7 +14,6 @@ struct GeneralProperties {
     
     static let heighTapObjects: CGFloat = 44
     
-    
     // Хардкод функция для предустановки логина и пароля
     static func setupLoginData() {
         let login = "1234"

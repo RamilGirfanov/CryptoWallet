@@ -13,8 +13,8 @@ enum VCType {
 }
 
 enum Models {
-    static let account = Account()
-    static let network = Network()
+    static let account = Account.shared
+    static let network = Network.shared
     static let sorting = Sorting()
 }
 

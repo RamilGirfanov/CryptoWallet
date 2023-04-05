@@ -16,6 +16,9 @@ enum UDEnterKeys {
 
 
 struct Account: AccountProtocol {
+    static let shared = Account()
+    private init() {}
+    
     var enteredStatus: Bool {
         get {
             UserDefaults.standard.bool(forKey: UDEnterKeys.enterStatus)

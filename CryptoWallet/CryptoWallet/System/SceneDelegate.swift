@@ -17,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         GeneralProperties.setupLoginData()
         
-        let account = Account()
-        let enterStatus = account.enteredStatus
+        let enterStatus = Account.shared.enteredStatus
         
         switch enterStatus {
         case true:

@@ -8,6 +8,9 @@
 import Foundation
 
 final class Network: NetworkProtocol {
+    static let shared = Network()
+    private init() {}
+    
     private let coinList = ["btc",
                             "eth",
                             "tron",

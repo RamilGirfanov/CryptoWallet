@@ -15,7 +15,7 @@ enum UDEnterKeys {
 }
 
 
-struct Account: AccountProtocol {
+final class Account: AccountProtocol {
     static let shared = Account()
     private init() {}
     

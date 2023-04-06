@@ -76,7 +76,9 @@ final class ListScreenVC: UIViewController {
                                               action: #selector(logOut))
         navigationItem.leftBarButtonItem = barButtonLogOut
         
-        listScreen.table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        listScreen.table.refreshControl?.addTarget(self,
+                                                   action: #selector(refresh),
+                                                   for: .valueChanged)
     }
 }
 

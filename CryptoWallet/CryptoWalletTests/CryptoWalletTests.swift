@@ -19,8 +19,8 @@ final class CryptoWalletTests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        account = Account()
-        network = Network()
+        account = Account.shared
+        network = Network.shared
         sorting = Sorting()
         loginViewModel = LoginScreenVM(account: Models.account)
         listViewModel = ListScreenVM(network: Models.network,

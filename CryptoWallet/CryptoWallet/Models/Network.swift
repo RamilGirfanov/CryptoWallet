@@ -62,7 +62,7 @@ final class Network: NetworkProtocol {
             let coin = Coin(coinData: coinData)
             return coin
         } catch let error as NSError {
-            print(error.localizedDescription)
+            print("Ошибка парсинга JSON:\(error.localizedDescription)")
         }
         return nil
     }
@@ -99,6 +99,11 @@ final class Network: NetworkProtocol {
             let task = session.dataTask(with: url) { [weak self] data, response, error in
                 guard let self = self else { return }
                 
+                if let error = error {
+                    print("URL: \(url) \nОшибка при выполнении GET запроса: \(error.localizedDescription)")
+                    return
+                }
+                
                 guard
                     let data = data,
                     var coin = self.parseJSON(data: data)
@@ -106,18 +111,18 @@ final class Network: NetworkProtocol {
                     return
                 }
                 
-                // Получение изображения для монеты
-                if let coinID = coin.id {
-                    self.coinID = coinID
-                    let urlStringForImage = self.urlStringForImage
-                    
-                    self.getImage(fromeURLString: urlStringForImage) { data in
-                        coin.imageData = data
-                    }
-                }
                 
-                // Проверка на пустую монету
+                // Проверка на пустую монету и получение изображения для монеты
                 if coin.priceUsd != nil {
+                    if let coinID = coin.id {
+                        self.coinID = coinID
+                        let urlStringForImage = self.urlStringForImage
+                        
+                        self.getImage(fromeURLString: urlStringForImage) { data in
+                            coin.imageData = data
+                        }
+                    }
+                    
                     coinArray.append(coin)
                 }
                 group.leave()

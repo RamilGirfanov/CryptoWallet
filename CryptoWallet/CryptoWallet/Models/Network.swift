@@ -104,6 +104,13 @@ final class Network: NetworkProtocol {
                     return
                 }
                 
+                guard let response = response as? HTTPURLResponse,
+                      (200...299).contains(response.statusCode)
+                else {
+                    print("Ошибка сервера")
+                    return
+                }
+                
                 guard
                     let data = data,
                     var coin = self.parseJSON(data: data)

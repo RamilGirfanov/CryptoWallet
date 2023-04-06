@@ -41,16 +41,12 @@ final class Network: NetworkProtocol {
     private func getUrlArray() -> [URL] {
         var urlArray: [URL] = []
         
-        guard !coinList.isEmpty else {
-            return urlArray
-        }
+        guard !coinList.isEmpty else { return urlArray }
         
         coinList.forEach {
             coinString = $0
             
-            guard let url = URL(string: urlString) else {
-                return
-            }
+            guard let url = URL(string: urlString) else { return }
             
             urlArray.append(url)
         }
@@ -91,13 +87,16 @@ final class Network: NetworkProtocol {
         // Получение массива ссылок на монеты
         let urlArray = getUrlArray()
         
-        // DispatchGroup для запроса в сеть
         let group = DispatchGroup()
         
         urlArray.forEach { url in
             group.enter()
             
-            URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            let session =  URLSession.shared
+            
+            let task = session.dataTask(with: url) { [weak self] data, response, error in
                 guard let self = self else { return }
                 
                 guard
@@ -106,11 +105,10 @@ final class Network: NetworkProtocol {
                 else {
                     return
                 }
-
+                
                 // Получение изображения для монеты
                 if let coinID = coin.id {
                     self.coinID = coinID
-                    
                     let urlStringForImage = self.urlStringForImage
                     
                     self.getImage(fromeURLString: urlStringForImage) { data in
@@ -118,14 +116,14 @@ final class Network: NetworkProtocol {
                     }
                 }
                 
+                // Проверка на пустую монету
                 if coin.priceUsd != nil {
                     coinArray.append(coin)
                 }
-                
                 group.leave()
-            }.resume()
+            }
+            task.resume()
         }
-        
         group.notify(queue: .main) {
             completionHandler(coinArray)
         }

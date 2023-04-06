@@ -96,7 +96,7 @@ final class Network: NetworkProtocol {
             request.httpMethod = "GET"
             let session =  URLSession.shared
             
-            let task = session.dataTask(with: url) { [weak self] data, response, error in
+            let task = session.dataTask(with: request) { [weak self] data, response, error in
                 guard let self = self else { return }
                 
                 if let error = error {

@@ -61,7 +61,9 @@ final class LoginScreenVM: LoginVMProtocol {
     // MARK: - LoginVMProtocol
     
     func enter(login: String, pass: String) -> Bool {
-        guard checkLoginData(login: login, pass: pass) else { return false }
+        guard checkLoginData(login: login, pass: pass) else {
+            return false
+        }
         self.login()
         return true
     }

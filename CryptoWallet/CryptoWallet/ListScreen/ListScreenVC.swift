@@ -161,7 +161,9 @@ extension ListScreenVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.identifier, for: indexPath) as? CoinCell
-        guard let cell = cell else { return UITableViewCell() }
+        guard let cell = cell else {
+            return UITableViewCell()
+        }
         
         cell.pullCell(coin: coinArray[indexPath.row])
         

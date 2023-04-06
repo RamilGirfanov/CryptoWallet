@@ -63,7 +63,9 @@ extension SortingScreenVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SortingCell.identifier, for: indexPath) as? SortingCell
-        guard let cell = cell else { return UITableViewCell() }
+        guard let cell = cell else {
+            return UITableViewCell()
+        }
         
         if let sortingTypes = viewModel?.getSortingTypes() {
             var types: [String] = []

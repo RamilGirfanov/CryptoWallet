@@ -41,7 +41,9 @@ final class Network: NetworkProtocol {
     private func getUrlArray() -> [URL] {
         var urlArray: [URL] = []
         
-        guard !coinList.isEmpty else { return urlArray }
+        guard !coinList.isEmpty else {
+            return urlArray
+        }
         
         coinList.forEach {
             coinString = $0

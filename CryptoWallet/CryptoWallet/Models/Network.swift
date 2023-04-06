@@ -104,11 +104,24 @@ final class Network: NetworkProtocol {
                     return
                 }
                 
-                guard let response = response as? HTTPURLResponse,
-                      (200...299).contains(response.statusCode)
-                else {
-                    print("Ошибка сервера")
+                guard let response = response as? HTTPURLResponse else {
+                    print("Неверный HTTPS ответ")
                     return
+                }
+                
+                switch response.statusCode {
+                case 100...199:
+                    print("Ответ сервера: \(response.statusCode)")
+                case 200...299:
+                    print("\(response.statusCode)")
+                case 300...399:
+                    print("\(response.statusCode)")
+                case 400...499:
+                    print("Ошибка клиента: \(response.statusCode)")
+                case 500...599:
+                    print("Ошибка сервера: \(response.statusCode)")
+                default:
+                    print("Неверный код состояния HTTPS ответа: \(response.statusCode)")
                 }
                 
                 guard
@@ -117,7 +130,6 @@ final class Network: NetworkProtocol {
                 else {
                     return
                 }
-                
                 
                 // Проверка на пустую монету и получение изображения для монеты
                 if coin.priceUsd != nil {

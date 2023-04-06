@@ -60,7 +60,8 @@ final class LoginScreenVC: UIViewController {
     @objc
     private func enter() {
         // Проверка на заполненность логина
-        guard loginScreen.loginTextField.text?.isEmpty == false else {
+        guard loginScreen.loginTextField.text?.isEmpty == false
+        else {
             let attributedString = NSAttributedString(string: "Введите логин",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             loginScreen.loginTextField.attributedPlaceholder = attributedString
@@ -68,7 +69,8 @@ final class LoginScreenVC: UIViewController {
         }
         
         // Проверка на заполненность пароля
-        guard loginScreen.passTextField.text?.isEmpty == false else {
+        guard loginScreen.passTextField.text?.isEmpty == false
+        else {
             let attributedString = NSAttributedString(string: "Введите пароль",
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             loginScreen.passTextField.attributedPlaceholder = attributedString

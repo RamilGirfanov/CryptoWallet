@@ -51,7 +51,10 @@ final class RootVCManager {
         
         var sceneDelegate: SceneDelegate? {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let delegate = windowScene.delegate as? SceneDelegate else { return nil }
+                  let delegate = windowScene.delegate as? SceneDelegate
+            else {
+                return nil
+            }
             return delegate
         }
         

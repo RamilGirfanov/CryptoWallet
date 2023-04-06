@@ -29,13 +29,17 @@ final class LoginScreenVM: LoginVMProtocol {
         let rightLogin = account?.login
         guard let rightLogin = rightLogin,
               login == rightLogin
-        else { return false }
+        else {
+            return false
+        }
         
         // Проверка на корректность пароля
         let rightPass = account?.password
         guard let rightPass = rightPass,
               pass == rightPass
-        else { return false }
+        else {
+            return false
+        }
         return true
     }
     
@@ -58,9 +62,7 @@ final class LoginScreenVM: LoginVMProtocol {
     
     func enter(login: String, pass: String) -> Bool {
         guard checkLoginData(login: login, pass: pass) else { return false }
-        
         self.login()
-        
         return true
     }
     
